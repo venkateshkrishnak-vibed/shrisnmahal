@@ -1,0 +1,535 @@
+<header id="header" class="bg-white shadow-sm border-b border-gray-200">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap">
+    <script>tailwind.config = {
+      "theme": {
+        "extend": {
+          "colors": {
+            "royal-blue": "#4169E1",
+            "gold": "#FFD700",
+            "soft-white": "#F8F8FF"
+          },
+          "fontFamily": {
+            "sans": [
+              "Inter",
+              "sans-serif"
+            ]
+          }
+        }
+      }
+    };</script>
+</head>
+<body class="bg-soft-white font-sans">
+
+<!-- Header -->
+<header id="header" class="bg-white shadow-md">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="flex items-center">
+  <a href="#hero"><img src="assets/images/logo.png" alt="Shri SN Mahal Logo" class="h-16 object-contain hover:opacity-90 transition-opacity duration-200"></a>
+  <!-- Brand name removed -->
+    </div>
+    <nav class="hidden md:flex items-center space-x-6">
+            <a href="#about" class="text-gray-800 hover:text-gold font-medium transition-colors duration-200 px-4 py-2">About</a>
+            <a href="#gallery" class="text-gray-800 hover:text-gold font-medium transition-colors duration-200 px-4 py-2">Gallery</a>
+            <a href="#why-choose-us" class="text-gray-800 hover:text-gold font-medium transition-colors duration-200 px-4 py-2">Why choose us</a>
+            <a href="#testimonials" class="text-gray-800 hover:text-gold font-medium transition-colors duration-200 px-4 py-2">Testimonials</a>
+            <a href="#locate-us" class="text-gray-800 hover:text-gold font-medium transition-colors duration-200 px-4 py-2">Contact</a>
+    </nav>
+    <div class="flex items-center space-x-4">
+      <div class="hidden md:flex items-center space-x-2 text-gray-800">
+        <i class="fa-solid fa-phone text-gold"></i>
+        <span>+91 90928 04747</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Banner -->
+<section id="hero" class="relative h-screen overflow-hidden" style="height: calc(100vh - 72px)">
+  <img class="w-full h-full object-cover" src="assets/images/hero.jpg" alt="luxurious wedding venue hall with royal blue and gold decorations, crystal chandeliers, elegant wedding setup">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="absolute inset-0 flex items-center justify-center">
+    <div class="text-center text-white">
+      <h1 class="font-serif text-5xl md:text-6xl font-bold mb-4">Shri SN Mahal</h1>
+  <p class="text-xl md:text-2xl mb-8">Unforgettable Weddings, Timeless Memories</p>
+      <a href="tel:+919092804747" class="bg-gold text-black px-8 py-3 rounded-lg font-semibold text-lg hover:bg-yellow-500 inline-block">
+        Book Now
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-16 px-4">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-serif text-4xl font-bold text-gray-800 mb-6">About Shri SN Mahal</h2>
+        <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+          A luxurious marriage hall in the heart of Trichy. Nestled within a picturesque 1.5-acre campus, 
+          our luxurious venue offers an enchanting ambiance for your special day. With abundant car parking 
+          facilities and a fully air-conditioned hall and dining area on the ground floor, your guests will enjoy utmost comfort. 
+        </p>
+        <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+          Our cozy air-conditioned rooms and modern interiors add an extra touch of elegance to your celebration. 
+          Conveniently located just 5 minutes away from the revered Murugan Temple, and a mere 15 minutes 
+          from both Trichy Central Bus Stand and Trichy Railway Junction, our venue ensures easy accessibility for all. 
+          Make cherished memories at our splendid wedding destination.
+        </p>
+        <div class="flex space-x-6">
+          <div class="flex flex-1 justify-center items-center space-x-16">
+            <div class="flex flex-col items-center text-center w-1/2">
+              <div class="text-3xl font-bold text-royal-blue">11</div>
+              <div class="text-gray-600 text-center">Months Old<br>Brand New Marriage Hall</div>
+            </div>
+            <div class="flex flex-col items-center text-center w-1/2">
+              <div class="text-3xl font-bold text-royal-blue">150+</div>
+              <div class="text-gray-600 text-center">Happy Couples<br>and counting....</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+  <img class="w-full h-96 object-cover rounded-lg shadow-lg" src="assets/images/about.jpg" alt="elegant wedding venue interior with royal blue and gold theme, decorated hall with flowers">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Photo and Video Gallery -->
+<section id="gallery" class="py-16 px-4 bg-gray-50">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">Gallery</h2>
+      <p class="text-gray-600 text-lg">Witness the magic of celebrations at Shri SN Mahal</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="relative group overflow-hidden rounded-lg">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery1.jpg" alt="wedding ceremony setup with royal blue decorations and gold accents">
+        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+          <i class="fa-solid fa-play text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+        </div>
+      </div>
+      <div class="relative group overflow-hidden rounded-lg">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery2.jpg" alt="wedding reception hall with elegant lighting and table settings">
+      </div>
+      <div class="relative group overflow-hidden rounded-lg">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery3.jpg" alt="bride and groom dancing in decorated wedding venue">
+      </div>
+      <div class="relative group overflow-hidden rounded-lg">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery4.jpg" alt="wedding stage decoration with flowers and royal blue theme">
+      </div>
+      <div class="relative group overflow-hidden rounded-lg">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery5.jpg" alt="wedding catering setup with elegant food presentation">
+      </div>
+      <div class="relative group overflow-hidden rounded-lg">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery6.jpg" alt="wedding guests enjoying celebration in beautiful venue">
+      </div>
+      <div class="relative group overflow-hidden rounded-lg">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery7.jpg" alt="elegant wedding venue setup">
+      </div>
+      <div class="relative group overflow-hidden rounded-lg">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery8.webp" alt="wedding venue interior view">
+      </div>
+      <div class="relative group overflow-hidden rounded-lg">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery9.webp" alt="wedding ceremony decoration">
+      </div>
+      <div class="relative group overflow-hidden rounded-lg">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery10.webp" alt="wedding venue outdoor area">
+      </div>
+      <div class="relative group overflow-hidden rounded-lg">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery11.webp" alt="wedding reception setup">
+      </div>
+      <div class="relative group overflow-hidden rounded-lg">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery12.webp" alt="wedding venue dining area">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section id="why-choose-us" class="py-16 px-4">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">Why Choose Us?</h2>
+      <p class="text-gray-600 text-lg">Discover what makes Shri SN Mahal the perfect choice for your special day</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div class="text-center bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fa-solid fa-users text-black text-2xl"></i>
+        </div>
+        <div class="text-3xl font-bold text-royal-blue mb-2">750+</div>
+        <div class="text-gray-600 font-medium">A/C Main Hall Capacity</div>
+      </div>
+      <div class="text-center bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fa-solid fa-utensils text-black text-2xl"></i>
+        </div>
+        <div class="text-3xl font-bold text-royal-blue mb-2">200+</div>
+        <div class="text-gray-600 font-medium">A/C Dining Capacity</div>
+      </div>
+      <div class="text-center bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fa-solid fa-car text-black text-2xl"></i>
+        </div>
+        <div class="text-3xl font-bold text-royal-blue mb-2">100+</div>
+        <div class="text-gray-600 font-medium">Cars Parking</div>
+      </div>
+      <div class="text-center bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fa-solid fa-bed text-black text-2xl"></i>
+        </div>
+        <div class="text-3xl font-bold text-royal-blue mb-2">15</div>
+        <div class="text-gray-600 font-medium">A/C Rooms</div>
+      </div>
+      <div class="text-center bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fa-solid fa-star text-black text-2xl"></i>
+        </div>
+        <div class="text-3xl font-bold text-royal-blue mb-2">4.9/5</div>
+        <div class="text-gray-600 font-medium">230+ Customer Ratings</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials" class="py-16 px-4 bg-gray-50">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">What our guests say?</h2>
+      <p class="text-gray-600 text-lg">Read experiences from couples who celebrated at our venue</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+        <div class="flex items-center mb-4">
+          <div class="flex text-gold">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-6 italic">"I had a memorable wedding here. The AC rooms for Bride and Groom were spacious and nice. The venue is clean and massive like a big Mall. Decoration and interior also are very nice.. I had wonderful marriage day.. Very helpful people and owner was nice and ready to help for any issues"</p>
+        <div class="flex items-center">
+          <img src="assets/images/avatar1.jpg" alt="Prem Lakshminarayanan" class="w-12 h-12 rounded-full mr-4">
+          <div>
+            <div class="font-semibold text-gray-800">Prem Lakshminarayanan</div>
+            <div class="text-gray-500 text-sm">Wedding Groom - June 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+        <div class="flex items-center mb-4">
+          <div class="flex text-gold">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-6 italic">"Excellent space. Very good arrangements. Ample car parking. Ideal mandapam for all occasions. Hall, dining, rooms all are fully air-conditioned and there is also a nice lawn to spend the evenings. We enjoyed, would love to attend more events here!"</p>
+        <div class="flex items-center">
+          <img src="assets/images/avatar2.jpg" alt="Chandrasekhar" class="w-12 h-12 rounded-full mr-4">
+          <div>
+            <div class="font-semibold text-gray-800">Chandrasekhar</div>
+            <div class="text-gray-500 text-sm">Wedding Guest - January 2025</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+        <div class="flex items-center mb-4">
+          <div class="flex text-gold">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-6 italic">"Very good place, very good ambience, lots of natural lighting surrounded by beautiful palm and coconut trees. Photos have come quite well and the couple is very happy. A beautiful and well maintained lawn is an added attraction"</p>
+        <div class="flex items-center">
+          <img src="assets/images/avatar3.jpg" alt="AB Photography" class="w-12 h-12 rounded-full mr-4">
+          <div>
+            <div class="font-semibold text-gray-800">AB Photography</div>
+            <div class="text-gray-500 text-sm">Wedding Photographer - June 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Locate Us -->
+<section id="locate-us" class="py-16 px-4">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">Find Us</h2>
+      <p class="text-gray-600 text-lg">Visit our beautiful venue and see for yourself</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div>
+        <div class="bg-gray-200 h-96 rounded-lg flex items-center justify-center">
+          <iframe
+            src="https://www.google.com/maps?q=Shri+SN+Mahal,+Vayalur+Murugan+Temple+Road,+Vayalur,+Tiruchirappalli,+Tamil+Nadu+620102&output=embed"
+            width="100%" height="100%" style="border:0; border-radius:0.75rem; min-height:24rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-serif text-2xl font-semibold text-gray-800 mb-4">Contact Information</h3>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-royal-blue rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-map-marker-alt text-white"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-1">Address</h4>
+            <p class="text-gray-600">Shri SN Mahal, Vayalur Murugan Temple Road, Vayalur, Tiruchirappalli, Tamil Nadu 620102</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-royal-blue rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-phone text-white"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-1">Phone</h4>
+            <p class="text-gray-600">+91 90928 04747</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-royal-blue rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-envelope text-white"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-1">Email</h4>
+            <p class="text-gray-600">info@shrisnmahal.com</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-royal-blue rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-clock text-white"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-1">Office Hours</h4>
+            <p class="text-gray-600">Mon - Sun: 9:00 AM - 8:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQs -->
+<section id="faqs" class="py-16 px-4 bg-gray-50">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+      <p class="text-gray-600 text-lg">Find answers to common questions about our venue</p>
+    </div>
+    <div class="max-w-3xl mx-auto space-y-4">
+      <div class="bg-white rounded-lg border border-gray-200">
+        <div class="p-6 cursor-pointer" onclick="toggleFAQ('faq1')">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-gray-800">What is the capacity of the main hall?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-500" id="faq1-icon"></i>
+          </div>
+        </div>
+        <div class="px-6 pb-6 hidden" id="faq1-content">
+          <p class="text-gray-600">Our venue can accommodate up to 1000 guests comfortably, with 750 seating and 1000 floating capacity to suit different event types.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200">
+        <div class="p-6 cursor-pointer" onclick="toggleFAQ('faq2')">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-gray-800">What is the capacity of dining hall?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-500" id="faq2-icon"></i>
+          </div>
+        </div>
+        <div class="px-6 pb-6 hidden" id="faq2-content">
+          <p class="text-gray-600">Our AC dining hall can comfortably accommodate 200 guests at a time.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200">
+        <div class="p-6 cursor-pointer" onclick="toggleFAQ('faq3')">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-gray-800">Do you take corporate bookings for meetings/award ceremonies?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-500" id="faq3-icon"></i>
+          </div>
+        </div>
+        <div class="px-6 pb-6 hidden" id="faq3-content">
+          <p class="text-gray-600">Yes, we also regularly host award ceremonies, zonal meetings and other corporate events for corporates in Trichy, Chennai, Bangalore, Coimbatore, Salem, Madurai etc.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200">
+        <div class="p-6 cursor-pointer" onclick="toggleFAQ('faq4')">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-gray-800">How many rooms do you have?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-500" id="faq4-icon"></i>
+          </div>
+        </div>
+        <div class="px-6 pb-6 hidden" id="faq4-content">
+          <p class="text-gray-600">We have a total of 15 rooms and all are fully air-conditioned.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200">
+        <div class="p-6 cursor-pointer" onclick="toggleFAQ('faq5')">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-gray-800">Do you provide catering services?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-500" id="faq5-icon"></i>
+          </div>
+        </div>
+        <div class="px-6 pb-6 hidden" id="faq5-content">
+          <p class="text-gray-600">Yes, we have partnered with a caterer who specialises in South Indian, North Indian, and Chinese cuisines.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200">
+        <div class="p-6 cursor-pointer" onclick="toggleFAQ('faq6')">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-gray-800">Is parking available?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-500" id="faq6-icon"></i>
+          </div>
+        </div>
+        <div class="px-6 pb-6 hidden" id="faq6-content">
+          <p class="text-gray-600">Yes, we have ample parking space for over 100 cars and 300 bikes.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200">
+        <div class="p-6 cursor-pointer" onclick="toggleFAQ('faq7')">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-gray-800">Can we customize the decoration?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-500" id="faq4-icon"></i>
+          </div>
+        </div>
+        <div class="px-6 pb-6 hidden" id="faq7-content">
+          <p class="text-gray-600">Absolutely! We offer professional decorators with 15+ years of service but you can ofcourse have your own decorators and customize the venue according to your theme and preferences without causing any damage to the venue</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Upcoming Events -->
+<section id="upcoming-events" class="py-16 px-4">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">Upcoming Events</h2>
+      <p class="text-gray-600 text-lg">See what's happening at Shri SN Mahal</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="bg-royal-blue text-white px-3 py-1 rounded-full text-sm font-medium">Wedding</div>
+            <div class="text-gray-500 text-sm">March 15, 2024</div>
+          </div>
+          <h3 class="font-semibold text-gray-800 mb-2">Sharma - Gupta Wedding</h3>
+          <p class="text-gray-600 text-sm mb-4">A beautiful traditional wedding ceremony with reception</p>
+          <div class="flex items-center text-gray-500 text-sm">
+            <i class="fa-solid fa-clock mr-2"></i>
+            <span>6:00 PM - 11:00 PM</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="bg-gold text-black px-3 py-1 rounded-full text-sm font-medium">Reception</div>
+            <div class="text-gray-500 text-sm">March 22, 2024</div>
+          </div>
+          <h3 class="font-semibold text-gray-800 mb-2">Patel Anniversary</h3>
+          <p class="text-gray-600 text-sm mb-4">25th wedding anniversary celebration</p>
+          <div class="flex items-center text-gray-500 text-sm">
+            <i class="fa-solid fa-clock mr-2"></i>
+            <span>7:00 PM - 10:00 PM</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="bg-royal-blue text-white px-3 py-1 rounded-full text-sm font-medium">Engagement</div>
+            <div class="text-gray-500 text-sm">March 30, 2024</div>
+          </div>
+          <h3 class="font-semibold text-gray-800 mb-2">Singh Engagement</h3>
+          <p class="text-gray-600 text-sm mb-4">Ring ceremony with family and friends</p>
+          <div class="flex items-center text-gray-500 text-sm">
+            <i class="fa-solid fa-clock mr-2"></i>
+            <span>5:00 PM - 9:00 PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-800 text-white py-12 px-4">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+        <div class="font-serif text-2xl font-bold text-gold mb-4">Shri SN Mahal</div>
+        <p class="text-gray-300 mb-4">Creating unforgettable weddings and timeless memories. Your dream venue for life's most precious celebrations.</p>
+        <div class="flex space-x-4">
+        </div>
+      </div>
+      <div>
+        <h3 class="font-semibold text-lg mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="#hero" class="text-gray-300 hover:text-royal-blue font-medium cursor-pointer transition duration-200">Home</a></li>
+          <li><a href="#about" class="text-gray-300 hover:text-royal-blue font-medium cursor-pointer transition duration-200">About Us</a></li>
+          <li><a href="#gallery" class="text-gray-300 hover:text-royal-blue font-medium cursor-pointer transition duration-200">Gallery</a></li>
+          <li><a href="#why-choose-us" class="text-gray-300 hover:text-royal-blue font-medium cursor-pointer transition duration-200">Why choose us</a></li>
+          <li><a href="#testimonials" class="text-gray-300 hover:text-royal-blue font-medium cursor-pointer transition duration-200">Testimonials</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold text-lg mb-4">Services</h3>
+        <ul class="space-y-2">
+          <li><span class="text-gray-300">Wedding Ceremonies</span></li>
+          <li><span class="text-gray-300">Reception Parties</span></li>
+          <li><span class="text-gray-300">Corporate Events</span></li>
+          <li><span class="text-gray-300">Birthday Parties</span></li>
+          <li><span class="text-gray-300">Anniversary Celebrations</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold text-lg mb-4">Contact Info</h3>
+        <div class="space-y-3">
+          <div class="flex items-center">
+            <i class="fa-solid fa-map-marker-alt mr-3 text-gold"></i>
+            <span class="text-gray-300">Shri SN Mahal, Vayalur Murugan Temple Road, Vayalur, Tiruchirappalli, Tamil Nadu 620102</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-solid fa-phone mr-3 text-gold"></i>
+            <span class="text-gray-300">+91 90928 04747</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-solid fa-envelope mr-3 text-gold"></i>
+            <span class="text-gray-300">info@shrisnmahal.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+      <p class="text-gray-400">© 2024 Shri SN Mahal. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="scripts.js"></script>
+</body>
+</html>
