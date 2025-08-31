@@ -1,4 +1,3 @@
-<header id="header" class="bg-white shadow-sm border-b border-gray-200">
 <!DOCTYPE html>
 <html>
 <head>
@@ -430,48 +429,16 @@
       <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">Upcoming Events</h2>
       <p class="text-gray-600 text-lg">See what's happening at Shri SN Mahal</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
-        <div class="p-6">
-          <div class="flex items-center justify-between mb-4">
-            <div class="bg-royal-blue text-white px-3 py-1 rounded-full text-sm font-medium">Wedding</div>
-            <div class="text-gray-500 text-sm">Sept 4, 2025</div>
-          </div>
-          <h3 class="font-semibold text-gray-800 mb-2">Wedding</h3>
-          <p class="text-gray-600 text-sm mb-4">A beautiful traditional wedding ceremony with reception</p>
-          <div class="flex items-center text-gray-500 text-sm">
-            <i class="fa-solid fa-clock mr-2"></i>
-            <span>6:00 AM - 11:00 PM</span>
-          </div>
-        </div>
+    <div class="max-w-4xl mx-auto">
+      <div id="loading" class="text-center py-8">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gold"></div>
+        <p class="text-gray-600 mt-2">Loading events...</p>
       </div>
-      <div class="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
-        <div class="p-6">
-          <div class="flex items-center justify-between mb-4">
-            <div class="bg-gold text-black px-3 py-1 rounded-full text-sm font-medium">Wedding</div>
-            <div class="text-gray-500 text-sm">Sept 14, 2025</div>
-          </div>
-          <h3 class="font-semibold text-gray-800 mb-2">Wedding</h3>
-          <p class="text-gray-600 text-sm mb-4">An elegant Tamil wedding</p>
-          <div class="flex items-center text-gray-500 text-sm">
-            <i class="fa-solid fa-clock mr-2"></i>
-            <span>6:00 AM - 11:00 PM</span>
-          </div>
-        </div>
+      <div id="events-list" class="space-y-4 hidden">
+        <!-- Events will be populated here -->
       </div>
-      <div class="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
-        <div class="p-6">
-          <div class="flex items-center justify-between mb-4">
-            <div class="bg-royal-blue text-white px-3 py-1 rounded-full text-sm font-medium">Corporate Event</div>
-            <div class="text-gray-500 text-sm">Sep 19, 2025</div>
-          </div>
-          <h3 class="font-semibold text-gray-800 mb-2">Corporate Award Ceremony</h3>
-          <p class="text-gray-600 text-sm mb-4">Annual award ceremony to celebrate the team wins</p>
-          <div class="flex items-center text-gray-500 text-sm">
-            <i class="fa-solid fa-clock mr-2"></i>
-            <span>5:00 PM - 9:00 PM</span>
-          </div>
-        </div>
+      <div id="no-events" class="text-center py-8 hidden">
+        <p class="text-gray-600">No upcoming events at this time.</p>
       </div>
     </div>
   </div>
@@ -530,6 +497,7 @@
     </div>
   </div>
 </footer>
+<script src="calendar-api.js"></script>
 <script src="scripts.js"></script>
 </body>
 </html>
