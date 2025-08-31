@@ -86,6 +86,7 @@
   </div>
 </section>
 
+
 <!-- About Section -->
 <section id="about" class="py-16 px-4">
   <div class="container mx-auto">
@@ -123,7 +124,28 @@
   </div>
 </section>
 
-<!-- Photo and Video Gallery -->
+<!-- Video Section -->
+<section id="venue-videos" class="py-16 px-4 bg-white">
+  <div class="container mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">Experience our venue</h2>
+      <p class="text-gray-600 text-lg">Watch the celebrations at Shri SN Mahal</p>
+    </div>
+    <div class="relative w-full mx-auto">
+      <div id="video-carousel" class="overflow-hidden rounded-lg shadow-lg relative w-full" style="min-height:520px;">
+        <iframe src="https://www.youtube.com/embed/EZewGOc-fho?rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-[520px]" id="venue-video"></iframe>
+        <button id="video-left" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-transparent text-white p-0 z-10" aria-label="Previous video" style="border:none;box-shadow:none;">
+          <i class="fa-solid fa-chevron-left text-4xl"></i>
+        </button>
+        <button id="video-right" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-transparent text-white p-0 z-10" aria-label="Next video" style="border:none;box-shadow:none;">
+          <i class="fa-solid fa-chevron-right text-4xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Photo Gallery -->
 <section id="gallery" class="py-16 px-4 bg-gray-50">
   <div class="container mx-auto">
     <div class="text-center mb-12">
@@ -131,12 +153,9 @@
       <p class="text-gray-600 text-lg">Witness the magic of celebrations at Shri SN Mahal</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="relative group overflow-hidden rounded-lg">
+    <div class="relative group overflow-hidden rounded-lg">
   <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery1.jpg" alt="wedding ceremony setup with royal blue decorations and gold accents">
-        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-          <i class="fa-solid fa-play text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
-        </div>
-      </div>
+    </div>
       <div class="relative group overflow-hidden rounded-lg">
   <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery2.jpg" alt="wedding reception hall with elegant lighting and table settings">
       </div>
@@ -366,7 +385,7 @@
             <i class="fa-solid fa-chevron-down text-gray-500" id="faq1-icon"></i>
           </div>
         </div>
-        <div class="px-6 pb-6 hidden" id="faq1-content">
+        <div class="px-6 pb-6" id="faq1-content">
           <p class="text-gray-600">Our venue can accommodate up to 1000 guests comfortably, with 750 seating and 1000 floating capacity to suit different event types.</p>
         </div>
       </div>
@@ -377,7 +396,7 @@
             <i class="fa-solid fa-chevron-down text-gray-500" id="faq2-icon"></i>
           </div>
         </div>
-        <div class="px-6 pb-6 hidden" id="faq2-content">
+        <div class="px-6 pb-6" id="faq2-content">
           <p class="text-gray-600">Our AC dining hall can comfortably accommodate 200 guests at a time.</p>
         </div>
       </div>
@@ -388,52 +407,63 @@
             <i class="fa-solid fa-chevron-down text-gray-500" id="faq3-icon"></i>
           </div>
         </div>
-        <div class="px-6 pb-6 hidden" id="faq3-content">
+        <div class="px-6 pb-6" id="faq3-content">
           <p class="text-gray-600">Yes, we also regularly host award ceremonies, zonal meetings and other corporate events for corporates in Trichy, Chennai, Bangalore, Coimbatore, Salem, Madurai etc.</p>
         </div>
       </div>
       <div class="bg-white rounded-lg border border-gray-200">
         <div class="p-6 cursor-pointer" onclick="toggleFAQ('faq4')">
           <div class="flex items-center justify-between">
-            <h3 class="font-semibold text-gray-800">How many rooms do you have?</h3>
+            <h3 class="font-semibold text-gray-800">What all events do you host?</h3>
             <i class="fa-solid fa-chevron-down text-gray-500" id="faq4-icon"></i>
           </div>
         </div>
-        <div class="px-6 pb-6 hidden" id="faq4-content">
-          <p class="text-gray-600">We have a total of 15 rooms and all are fully air-conditioned.</p>
+        <div class="px-6 pb-6" id="faq4-content">
+          <p class="text-gray-600">We host a variety of events including weddings, receptions, engagement, baby-shower, birthday parties, corporate meetings, and cultural programs. Our versatile space can be adapted to suit your specific needs.</p>
         </div>
       </div>
       <div class="bg-white rounded-lg border border-gray-200">
         <div class="p-6 cursor-pointer" onclick="toggleFAQ('faq5')">
           <div class="flex items-center justify-between">
-            <h3 class="font-semibold text-gray-800">Do you provide catering services?</h3>
+            <h3 class="font-semibold text-gray-800">How many rooms do you have?</h3>
             <i class="fa-solid fa-chevron-down text-gray-500" id="faq5-icon"></i>
           </div>
         </div>
-        <div class="px-6 pb-6 hidden" id="faq5-content">
-          <p class="text-gray-600">Yes, we have partnered with a caterer who specialises in South Indian, North Indian, and Chinese cuisines.</p>
+        <div class="px-6 pb-6" id="faq5-content">
+          <p class="text-gray-600">We have a total of 15 rooms and all are fully air-conditioned.</p>
         </div>
       </div>
       <div class="bg-white rounded-lg border border-gray-200">
         <div class="p-6 cursor-pointer" onclick="toggleFAQ('faq6')">
           <div class="flex items-center justify-between">
-            <h3 class="font-semibold text-gray-800">Is parking available?</h3>
+            <h3 class="font-semibold text-gray-800">Do you provide catering services?</h3>
             <i class="fa-solid fa-chevron-down text-gray-500" id="faq6-icon"></i>
           </div>
         </div>
-        <div class="px-6 pb-6 hidden" id="faq6-content">
-          <p class="text-gray-600">Yes, we have ample parking space for over 100 cars and 300 bikes.</p>
+        <div class="px-6 pb-6" id="faq6-content">
+          <p class="text-gray-600">Yes, we have partnered with a caterer who specialises in South Indian, North Indian, and Chinese cuisines.</p>
         </div>
       </div>
       <div class="bg-white rounded-lg border border-gray-200">
         <div class="p-6 cursor-pointer" onclick="toggleFAQ('faq7')">
           <div class="flex items-center justify-between">
-            <h3 class="font-semibold text-gray-800">Can we customize the decoration?</h3>
-            <i class="fa-solid fa-chevron-down text-gray-500" id="faq4-icon"></i>
+            <h3 class="font-semibold text-gray-800">Is parking available?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-500" id="faq7-icon"></i>
           </div>
         </div>
-        <div class="px-6 pb-6 hidden" id="faq7-content">
-          <p class="text-gray-600">Absolutely! We offer professional decorators with 15+ years of service but you can ofcourse have your own decorators and customize the venue according to your theme and preferences without causing any damage to the venue</p>
+        <div class="px-6 pb-6" id="faq7-content">
+          <p class="text-gray-600">Yes, we have ample parking space for over 100 cars and 300 bikes.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg border border-gray-200">
+        <div class="p-6 cursor-pointer" onclick="toggleFAQ('faq8')">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-gray-800">Can we customize the decoration?</h3>
+            <i class="fa-solid fa-chevron-down text-gray-500" id="faq8-icon"></i>
+          </div>
+        </div>
+        <div class="px-6 pb-6" id="faq8-content">
+          <p class="text-gray-600">Absolutely! We offer professional decorators with 15+ years of service but you can of course have your own decorators and customize the venue according to your theme and preferences without causing any damage to the venue.</p>
         </div>
       </div>
     </div>
