@@ -5,6 +5,20 @@
   <title>Shri SN Mahal - Luxurious Wedding Venue in Trichy</title>
   <meta name="description" content="Shri SN Mahal is a luxurious marriage hall in Trichy, offering a royal venue, spacious AC halls, AC dining, AC rooms, garden and ample parking for unforgettable weddings and events">
   <meta name="keywords" content="wedding venue, marriage hall, Trichy, Shri SN Mahal, AC hall, luxury, events, reception, banquet, Tamil Nadu, parking, rooms, dining, celebrations">
+  
+  <!-- Additional Google Ads Landing Page Optimization -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Shri SN Mahal">
+  <meta name="geo.region" content="IN-TN">
+  <meta name="geo.placename" content="Tiruchirappalli, Tamil Nadu">
+  <meta name="geo.position" content="10.8505;78.6569">
+  <meta name="ICBM" content="10.8505, 78.6569">
+  <meta name="googlebot" content="index, follow">
+  <meta name="bingbot" content="index, follow">
+  <meta name="theme-color" content="#3E2723">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
   <link rel="canonical" href="https://shrisnmahal.com/">
   <meta property="og:title" content="Shri SN Mahal - Luxurious Wedding Venue in Trichy">
   <meta property="og:description" content="Luxurious AC marriage hall in Vayalur, Trichy with royal theme, spacious halls, dining, rooms, garden for outdoor events and parking. Perfect for weddings, receptions, and events.">
@@ -12,6 +26,63 @@
   <meta property="og:url" content="https://shrisnmahal.com/">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="assets/images/logo.png">
+  
+  <!-- Enhanced Schema.org Structured Data for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Shri SN Mahal",
+    "description": "Luxurious AC marriage hall in Vayalur, Trichy offering spacious halls, dining, rooms, garden for outdoor events and ample parking.",
+    "url": "https://shrisnmahal.com",
+    "image": "https://shrisnmahal.com/assets/images/hero.jpg",
+    "telephone": "+91-431-XXXXXXX",
+    "email": "info@shrisnmahal.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Vayalur Road",
+      "addressLocality": "Tiruchirappalli",
+      "addressRegion": "Tamil Nadu",
+      "addressCountry": "IN",
+      "postalCode": "620010"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "10.8505",
+      "longitude": "78.6569"
+    },
+    "openingHours": "Mo-Su 09:00-22:00",
+    "priceRange": "$$",
+    "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+    "hasMap": "https://maps.google.com/?q=Shri+SN+Mahal+Trichy",
+    "sameAs": [
+      "https://www.youtube.com/@ShriSNMahalTrichy-li3zw"
+    ],
+    "additionalType": ["EventVenue", "WeddingVenue"],
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Air Conditioning",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification", 
+        "name": "Parking",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Catering",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Garden Area",
+        "value": true
+      }
+    ]
+  }
+  </script>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZYS58MRMZ6"></script>
     <script>
@@ -19,6 +90,28 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-ZYS58MRMZ6');
+    </script>
+    
+    <!-- Google Ads Conversion Tracking (Replace AW-CONVERSION_ID with your actual ID) -->
+    <script>
+      // Function to track phone call conversions
+      function trackPhoneCall() {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
+          'event_callback': function() {
+            // Optional: Add callback logic
+          }
+        });
+      }
+      
+      // Function to track form submissions or booking inquiries
+      function trackBookingInquiry() {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
+          'value': 1.0,
+          'currency': 'INR'
+        });
+      }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -145,7 +238,7 @@
     <div class="text-center text-white">
       <h1 class="font-serif text-5xl md:text-6xl font-bold mb-4">Shri SN Mahal</h1>
   <p class="text-xl md:text-2xl mb-8">Begin your forever with us!</p>
-      <a href="tel:+919092804747" class="bg-cream text-dark-brown px-8 py-3 rounded-lg font-semibold text-lg hover:bg-dark-brown hover:text-warm-white inline-block">
+      <a href="tel:+919092804747" class="bg-cream text-dark-brown px-8 py-3 rounded-lg font-semibold text-lg hover:bg-dark-brown hover:text-warm-white inline-block" onclick="trackPhoneCall()">
         Book Now
       </a>
     </div>
