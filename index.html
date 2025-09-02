@@ -32,6 +32,11 @@
       "theme": {
         "extend": {
           "colors": {
+            "dark-brown": "#3E2723",
+            "medium-brown": "#5D4037",
+            "light-brown": "#8D6E63",
+            "warm-white": "#FFF8E1",
+            "cream": "#F5F5DC",
             "royal-blue": "#4169E1",
             "gold": "#FFD700",
             "soft-white": "#F8F8FF"
@@ -45,29 +50,90 @@
         }
       }
     };</script>
+    <!-- Schema.org Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EventVenue",
+      "name": "Shri SN Mahal",
+      "description": "Luxurious AC marriage hall in Vayalur, Trichy with royal theme, spacious halls, dining, rooms, garden for outdoor events and parking.",
+      "url": "https://shrisnmahal.com/",
+      "telephone": "+91-90928-04747",
+      "email": "info@shrisnmahal.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Vayalur Murugan Temple Road, Vayalur",
+        "addressLocality": "Tiruchirappalli",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "620102",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "10.8505",
+        "longitude": "78.6569"
+      },
+      "openingHours": "Mo-Su 09:00-20:00",
+      "maximumAttendeeCapacity": 1000,
+      "amenityFeature": [
+        {"@type": "LocationFeatureSpecification", "name": "Air Conditioning"},
+        {"@type": "LocationFeatureSpecification", "name": "Parking"},
+        {"@type": "LocationFeatureSpecification", "name": "Accommodation"},
+        {"@type": "LocationFeatureSpecification", "name": "Catering"}
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "230"
+      }
+    }
+    </script>
 </head>
-<body class="bg-soft-white font-sans">
+<body class="bg-warm-white font-sans">
 
 <!-- Header -->
-<header id="header" class="bg-white shadow-md">
-  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-    <div class="flex items-center">
+<header id="header" class="bg-dark-brown shadow-md">
+  <div class="container mx-auto px-4 py-4 flex items-center">
+    <div class="flex items-center mr-8">
   <a href="#hero"><img src="assets/images/logo.png" alt="Shri SN Mahal Logo" class="h-16 object-contain hover:opacity-90 transition-opacity duration-200"></a>
-  <!-- Brand name removed -->
     </div>
-    <nav class="hidden md:flex items-center space-x-6">
-            <a href="#about" class="text-gray-800 hover:text-gold font-medium transition-colors duration-200 px-4 py-2">About</a>
-            <a href="#gallery" class="text-gray-800 hover:text-gold font-medium transition-colors duration-200 px-4 py-2">Gallery</a>
-            <a href="#why-choose-us" class="text-gray-800 hover:text-gold font-medium transition-colors duration-200 px-4 py-2">Why choose us</a>
-            <a href="#testimonials" class="text-gray-800 hover:text-gold font-medium transition-colors duration-200 px-4 py-2">Testimonials</a>
-            <a href="#locate-us" class="text-gray-800 hover:text-gold font-medium transition-colors duration-200 px-4 py-2">Contact</a>
+    <nav class="hidden md:flex items-center space-x-6 flex-1 justify-center">
+            <a href="#about" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">About</a>
+            <a href="#venue-videos" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">Videos</a>
+            <a href="#gallery" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">Gallery</a>
+            <a href="#why-choose-us" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">Why us</a>
+            <a href="#testimonials" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">Testimonials</a>
+            <a href="#faqs" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">FAQs</a>
+            <a href="#upcoming-events" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">Events</a>
+            <a href="#locate-us" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">Contact</a>
     </nav>
-    <div class="flex items-center space-x-4">
-      <div class="hidden md:flex items-center space-x-2 text-gray-800">
-        <i class="fa-solid fa-phone text-gold"></i>
+    <div class="flex items-center space-x-4 ml-8">
+      <div class="hidden md:flex items-center space-x-2 text-warm-white">
+        <i class="fa-solid fa-phone text-warm-white"></i>
         <span>+91 90928 04747</span>
       </div>
+      <!-- Mobile menu button -->
+      <button class="md:hidden text-warm-white" onclick="toggleMobileMenu()">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
     </div>
+  </div>
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-medium-brown">
+    <nav class="px-4 py-4 space-y-2">
+      <a href="#about" class="block text-warm-white hover:text-cream font-medium py-2" onclick="toggleMobileMenu()">About</a>
+      <a href="#venue-videos" class="block text-warm-white hover:text-cream font-medium py-2" onclick="toggleMobileMenu()">Videos</a>
+      <a href="#gallery" class="block text-warm-white hover:text-cream font-medium py-2" onclick="toggleMobileMenu()">Gallery</a>
+      <a href="#why-choose-us" class="block text-warm-white hover:text-cream font-medium py-2" onclick="toggleMobileMenu()">Why us</a>
+      <a href="#testimonials" class="block text-warm-white hover:text-cream font-medium py-2" onclick="toggleMobileMenu()">Testimonials</a>
+      <a href="#faqs" class="block text-warm-white hover:text-cream font-medium py-2" onclick="toggleMobileMenu()">FAQs</a>
+      <a href="#upcoming-events" class="block text-warm-white hover:text-cream font-medium py-2" onclick="toggleMobileMenu()">Events</a>
+      <a href="#locate-us" class="block text-warm-white hover:text-cream font-medium py-2" onclick="toggleMobileMenu()">Contact</a>
+      <div class="flex items-center space-x-2 text-warm-white pt-4 border-t border-light-brown">
+        <i class="fa-solid fa-phone text-warm-white"></i>
+        <span>+91 90928 04747</span>
+      </div>
+    </nav>
   </div>
 </header>
 
@@ -78,8 +144,8 @@
   <div class="absolute inset-0 flex items-center justify-center">
     <div class="text-center text-white">
       <h1 class="font-serif text-5xl md:text-6xl font-bold mb-4">Shri SN Mahal</h1>
-  <p class="text-xl md:text-2xl mb-8">Unforgettable Weddings, Timeless Memories</p>
-      <a href="tel:+919092804747" class="bg-gold text-black px-8 py-3 rounded-lg font-semibold text-lg hover:bg-yellow-500 inline-block">
+  <p class="text-xl md:text-2xl mb-8">Begin your forever with us!</p>
+      <a href="tel:+919092804747" class="bg-cream text-dark-brown px-8 py-3 rounded-lg font-semibold text-lg hover:bg-dark-brown hover:text-warm-white inline-block">
         Book Now
       </a>
     </div>
@@ -92,7 +158,7 @@
   <div class="container mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
-        <h2 class="font-serif text-4xl font-bold text-gray-800 mb-6">About Shri SN Mahal</h2>
+        <h2 class="font-serif text-4xl font-bold text-dark-brown mb-6">About Shri SN Mahal</h2>
         <p class="text-gray-600 text-lg mb-6 leading-relaxed">
           A luxurious marriage hall in the heart of Trichy. Nestled within a picturesque 1.5-acre campus, 
           our luxurious venue offers an enchanting ambiance for your special day. With abundant car parking 
@@ -107,11 +173,11 @@
         <div class="flex space-x-6">
           <div class="flex flex-1 justify-center items-center space-x-16">
             <div class="flex flex-col items-center text-center w-1/2">
-              <div class="text-3xl font-bold text-royal-blue">11</div>
+              <div class="text-3xl font-bold text-dark-brown">11</div>
               <div class="text-gray-600 text-center">Months Old<br>Brand New Marriage Hall</div>
             </div>
             <div class="flex flex-col items-center text-center w-1/2">
-              <div class="text-3xl font-bold text-royal-blue">150+</div>
+              <div class="text-3xl font-bold text-dark-brown">150+</div>
               <div class="text-gray-600 text-center">Happy Couples<br>and counting....</div>
             </div>
           </div>
@@ -125,11 +191,11 @@
 </section>
 
 <!-- Video Section -->
-<section id="venue-videos" class="py-16 px-4 bg-white">
+<section id="venue-videos" class="py-16 px-4 bg-dark-brown">
   <div class="container mx-auto">
     <div class="text-center mb-12">
-      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">Experience our venue</h2>
-      <p class="text-gray-600 text-lg">Watch the celebrations at Shri SN Mahal</p>
+      <h2 class="font-serif text-4xl font-bold text-white mb-4">Experience our venue</h2>
+      <p class="text-cream text-lg">Watch the celebrations at Shri SN Mahal</p>
     </div>
     <div class="relative w-full mx-auto">
       <div id="video-carousel" class="overflow-hidden rounded-lg shadow-lg relative w-full" style="min-height:520px;">
@@ -146,10 +212,10 @@
 </section>
 
 <!-- Photo Gallery -->
-<section id="gallery" class="py-16 px-4 bg-gray-50">
+<section id="gallery" class="py-16 px-4 bg-cream">
   <div class="container mx-auto">
     <div class="text-center mb-12">
-      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">Gallery</h2>
+      <h2 class="font-serif text-4xl font-bold text-dark-brown mb-4">Gallery</h2>
       <p class="text-gray-600 text-lg">Witness the magic of celebrations at Shri SN Mahal</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -197,43 +263,43 @@
 <section id="why-choose-us" class="py-16 px-4">
   <div class="container mx-auto">
     <div class="text-center mb-12">
-      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">Why Choose Us?</h2>
+      <h2 class="font-serif text-4xl font-bold text-dark-brown mb-4">Why Choose Us?</h2>
       <p class="text-gray-600 text-lg">Discover what makes Shri SN Mahal the perfect choice for your special day</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
       <div class="text-center bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fa-solid fa-users text-black text-2xl"></i>
+        <div class="w-16 h-16 bg-dark-brown rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fa-solid fa-users text-white text-2xl"></i>
         </div>
-        <div class="text-3xl font-bold text-royal-blue mb-2">750+</div>
+        <div class="text-3xl font-bold text-dark-brown mb-2">750+</div>
         <div class="text-gray-600 font-medium">A/C Main Hall Capacity</div>
       </div>
       <div class="text-center bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fa-solid fa-utensils text-black text-2xl"></i>
+        <div class="w-16 h-16 bg-dark-brown rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fa-solid fa-utensils text-white text-2xl"></i>
         </div>
-        <div class="text-3xl font-bold text-royal-blue mb-2">200+</div>
+        <div class="text-3xl font-bold text-dark-brown mb-2">200+</div>
         <div class="text-gray-600 font-medium">A/C Dining Capacity</div>
       </div>
       <div class="text-center bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fa-solid fa-car text-black text-2xl"></i>
+        <div class="w-16 h-16 bg-dark-brown rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fa-solid fa-car text-white text-2xl"></i>
         </div>
-        <div class="text-3xl font-bold text-royal-blue mb-2">100+</div>
+        <div class="text-3xl font-bold text-dark-brown mb-2">100+</div>
         <div class="text-gray-600 font-medium">Cars Parking</div>
       </div>
       <div class="text-center bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fa-solid fa-bed text-black text-2xl"></i>
+        <div class="w-16 h-16 bg-dark-brown rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fa-solid fa-bed text-white text-2xl"></i>
         </div>
-        <div class="text-3xl font-bold text-royal-blue mb-2">15</div>
+        <div class="text-3xl font-bold text-dark-brown mb-2">15</div>
         <div class="text-gray-600 font-medium">A/C Rooms</div>
       </div>
       <div class="text-center bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-        <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
-          <i class="fa-solid fa-star text-black text-2xl"></i>
+        <div class="w-16 h-16 bg-dark-brown rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fa-solid fa-star text-white text-2xl"></i>
         </div>
-        <div class="text-3xl font-bold text-royal-blue mb-2">4.9/5</div>
+        <div class="text-3xl font-bold text-dark-brown mb-2">4.9/5</div>
         <div class="text-gray-600 font-medium">230+ Customer Ratings</div>
       </div>
     </div>
@@ -241,16 +307,16 @@
 </section>
 
 <!-- Testimonials -->
-<section id="testimonials" class="py-16 px-4 bg-gray-50">
+<section id="testimonials" class="py-16 px-4 bg-cream">
   <div class="container mx-auto">
     <div class="text-center mb-12">
-      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">What our guests say?</h2>
-      <p class="text-gray-600 text-lg">Read experiences from couples who celebrated at our venue</p>
+      <h2 class="font-serif text-4xl font-bold text-dark-brown mb-4">What our guests say?</h2>
+      <p class="text-gray-600 text-lg">Read experiences from people who celebrated at our venue</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
         <div class="flex items-center mb-4">
-          <div class="flex text-gold">
+          <div class="flex text-light-brown">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -269,7 +335,7 @@
       </div>
       <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
         <div class="flex items-center mb-4">
-          <div class="flex text-gold">
+          <div class="flex text-light-brown">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -288,7 +354,7 @@
       </div>
       <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
         <div class="flex items-center mb-4">
-          <div class="flex text-gold">
+          <div class="flex text-light-brown">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -313,7 +379,7 @@
 <section id="locate-us" class="py-16 px-4">
   <div class="container mx-auto">
     <div class="text-center mb-12">
-      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">Find Us</h2>
+      <h2 class="font-serif text-4xl font-bold text-dark-brown mb-4">Find Us</h2>
       <p class="text-gray-600 text-lg">Visit our beautiful venue and see for yourself</p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -327,10 +393,10 @@
       </div>
       <div class="space-y-6">
         <div>
-          <h3 class="font-serif text-2xl font-semibold text-gray-800 mb-4">Contact Information</h3>
+          <h3 class="font-serif text-2xl font-semibold text-dark-brown mb-4">Contact Information</h3>
         </div>
         <div class="flex items-start space-x-4">
-          <div class="w-12 h-12 bg-royal-blue rounded-full flex items-center justify-center flex-shrink-0">
+          <div class="w-12 h-12 bg-dark-brown rounded-full flex items-center justify-center flex-shrink-0">
             <i class="fa-solid fa-map-marker-alt text-white"></i>
           </div>
           <div>
@@ -339,7 +405,7 @@
           </div>
         </div>
         <div class="flex items-start space-x-4">
-          <div class="w-12 h-12 bg-royal-blue rounded-full flex items-center justify-center flex-shrink-0">
+          <div class="w-12 h-12 bg-dark-brown rounded-full flex items-center justify-center flex-shrink-0">
             <i class="fa-solid fa-phone text-white"></i>
           </div>
           <div>
@@ -348,7 +414,7 @@
           </div>
         </div>
         <div class="flex items-start space-x-4">
-          <div class="w-12 h-12 bg-royal-blue rounded-full flex items-center justify-center flex-shrink-0">
+          <div class="w-12 h-12 bg-dark-brown rounded-full flex items-center justify-center flex-shrink-0">
             <i class="fa-solid fa-envelope text-white"></i>
           </div>
           <div>
@@ -357,7 +423,7 @@
           </div>
         </div>
         <div class="flex items-start space-x-4">
-          <div class="w-12 h-12 bg-royal-blue rounded-full flex items-center justify-center flex-shrink-0">
+          <div class="w-12 h-12 bg-dark-brown rounded-full flex items-center justify-center flex-shrink-0">
             <i class="fa-solid fa-clock text-white"></i>
           </div>
           <div>
@@ -371,10 +437,10 @@
 </section>
 
 <!-- FAQs -->
-<section id="faqs" class="py-16 px-4 bg-gray-50">
+<section id="faqs" class="py-16 px-4 bg-cream">
   <div class="container mx-auto">
     <div class="text-center mb-12">
-      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+      <h2 class="font-serif text-4xl font-bold text-dark-brown mb-4">Frequently Asked Questions</h2>
       <p class="text-gray-600 text-lg">Find answers to common questions about our venue</p>
     </div>
     <div class="max-w-3xl mx-auto space-y-4">
@@ -474,30 +540,51 @@
 <section id="upcoming-events" class="py-16 px-4">
   <div class="container mx-auto">
     <div class="text-center mb-12">
-      <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4">Upcoming Events</h2>
+      <h2 class="font-serif text-4xl font-bold text-dark-brown mb-4">Upcoming Events</h2>
       <p class="text-gray-600 text-lg">See what's happening at Shri SN Mahal</p>
     </div>
-    <div class="max-w-4xl mx-auto">
-      <div id="loading" class="text-center py-8">
-        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gold"></div>
-        <p class="text-gray-600 mt-2">Loading events...</p>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="bg-white rounded-lg shadow-lg border border-gray-700 overflow-hidden relative" style="height: 500px;">
+          <!-- Top overlay to hide today's date header -->
+          <div class="absolute top-0 left-0 right-0 h-12 bg-white z-10"></div>
+          <!-- Calendar container with custom styling -->
+          <div class="relative" style="height: 550px; overflow-y: auto;">
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&showPrint=0&showTitle=0&showNav=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA&showDate=0&src=Y2ZjZDI3MWZlZTI3NjAxYTBhYzFhMDMxYWI4NThkM2VlYzY4OWQ4MTIwNmQ1MDg4MDU5NmJiMjRlYjFlY2Y4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233f51b5" 
+                    style="border-width:0; pointer-events: none;" 
+                    width="100%" height="800" frameborder="0" scrolling="no"></iframe>
+            <!-- Invisible overlay that captures scroll but blocks clicks -->
+            <div class="absolute inset-0" 
+                 style="background: transparent; z-index: 5;"
+                 onwheel="
+                   event.preventDefault();
+                   const iframe = this.previousElementSibling;
+                   const container = this.parentElement;
+                   container.scrollTop += event.deltaY;
+                 "></div>
+          </div>
+          <!-- Bottom overlay to hide Google Calendar footer -->
+          <div class="absolute bottom-0 left-0 right-0 h-20 bg-white z-30"></div>
+        </div>
       </div>
-      <div id="events-list" class="space-y-4 hidden">
-        <!-- Events will be populated here -->
-      </div>
-      <div id="no-events" class="text-center py-8 hidden">
-        <p class="text-gray-600">No upcoming events at this time.</p>
+      <div class="relative">
+        <img class="w-full h-96 object-cover rounded-lg shadow-lg" src="assets/images/about.jpg" alt="elegant wedding venue interior with dark brown theme, decorated hall with flowers">
+        <div class="absolute inset-0 bg-gradient-to-t from-dark-brown via-transparent to-transparent rounded-lg"></div>
+        <div class="absolute bottom-6 left-6 text-white">
+          <h3 class="font-serif text-2xl font-bold mb-2">Plan Your Event</h3>
+        <p class="text-cream">Call at 9092804747 to book your special day with us!</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Footer -->
-<footer id="footer" class="bg-gray-800 text-white py-12 px-4">
+<footer id="footer" class="bg-dark-brown text-white py-12 px-4">
   <div class="container mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
       <div>
-        <div class="font-serif text-2xl font-bold text-gold mb-4">Shri SN Mahal</div>
+        <div class="font-serif text-2xl font-bold text-cream mb-4">Shri SN Mahal</div>
         <p class="text-gray-300 mb-4">Creating unforgettable weddings and timeless memories. Your dream venue for life's most precious celebrations.</p>
         <div class="flex space-x-4">
         </div>
@@ -505,11 +592,20 @@
       <div>
         <h3 class="font-semibold text-lg mb-4">Quick Links</h3>
         <ul class="space-y-2">
-          <li><a href="#hero" class="text-gray-300 hover:text-royal-blue font-medium cursor-pointer transition duration-200">Home</a></li>
-          <li><a href="#about" class="text-gray-300 hover:text-royal-blue font-medium cursor-pointer transition duration-200">About Us</a></li>
-          <li><a href="#gallery" class="text-gray-300 hover:text-royal-blue font-medium cursor-pointer transition duration-200">Gallery</a></li>
-          <li><a href="#why-choose-us" class="text-gray-300 hover:text-royal-blue font-medium cursor-pointer transition duration-200">Why choose us</a></li>
-          <li><a href="#testimonials" class="text-gray-300 hover:text-royal-blue font-medium cursor-pointer transition duration-200">Testimonials</a></li>
+          <li><a href="#hero" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Home</a></li>
+          <li><a href="#about" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">About Us</a></li>
+          <li><a href="#gallery" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Gallery</a></li>
+          <li><a href="#why-choose-us" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Why choose us</a></li>
+          <li><a href="#testimonials" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Testimonials</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold text-lg mb-4">More Links</h3>
+        <ul class="space-y-2">
+          <li><a href="#venue-videos" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Videos</a></li>
+          <li><a href="#faqs" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">FAQs</a></li>
+          <li><a href="#upcoming-events" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Events</a></li>
+          <li><a href="#locate-us" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Contact</a></li>
         </ul>
       </div>
       <div>
@@ -526,26 +622,36 @@
         <h3 class="font-semibold text-lg mb-4">Contact Info</h3>
         <div class="space-y-3">
           <div class="flex items-center">
-            <i class="fa-solid fa-map-marker-alt mr-3 text-gold"></i>
+            <i class="fa-solid fa-map-marker-alt mr-3 text-cream"></i>
             <span class="text-gray-300">Shri SN Mahal, Vayalur Murugan Temple Road, Vayalur, Tiruchirappalli, Tamil Nadu 620102</span>
           </div>
           <div class="flex items-center">
-            <i class="fa-solid fa-phone mr-3 text-gold"></i>
+            <i class="fa-solid fa-phone mr-3 text-cream"></i>
             <span class="text-gray-300">+91 90928 04747</span>
           </div>
           <div class="flex items-center">
-            <i class="fa-solid fa-envelope mr-3 text-gold"></i>
+            <i class="fa-solid fa-envelope mr-3 text-cream"></i>
             <span class="text-gray-300">info@shrisnmahal.com</span>
           </div>
         </div>
       </div>
     </div>
     <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+      <div class="flex items-center justify-center space-x-4 mb-4">
+        <a href="https://www.youtube.com/@shrisnmahaltrichy" target="_blank" rel="noopener noreferrer" class="text-red-500 hover:text-red-700 transition-colors duration-200">
+          <i class="fa-brands fa-youtube text-2xl"></i>
+        </a>
+      </div>
       <p class="text-gray-400">© 2024 Shri SN Mahal. All rights reserved.</p>
     </div>
   </div>
 </footer>
-<script src="calendar-api.js"></script>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" class="fixed bottom-8 right-8 bg-dark-brown text-white p-3 rounded-full shadow-lg hover:bg-medium-brown transition-colors duration-200 hidden z-50">
+  <i class="fa-solid fa-chevron-up text-xl"></i>
+</button>
+
 <script src="scripts.js"></script>
 </body>
 </html>

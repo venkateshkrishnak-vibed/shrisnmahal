@@ -29,7 +29,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         showVideo(currentVideo);
     }
+
+    // Back to top functionality
+    const backToTopBtn = document.getElementById('back-to-top');
+    
+    // Show/hide back to top button when user is near footer
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        
+        // Show button when user has scrolled to bottom 20% of the page
+        const scrollPercentage = (scrollTop + windowHeight) / documentHeight;
+        
+        if (scrollPercentage >= 0.8) {
+            backToTopBtn.classList.remove('hidden');
+        } else {
+            backToTopBtn.classList.add('hidden');
+        }
+    });
+    
+    // Smooth scroll to top when clicked
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });
+
+// Mobile menu toggle function
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+}
+
+// FAQ toggle function
 function toggleFAQ(faqId) {
     const content = document.getElementById(faqId + '-content');
     const icon = document.getElementById(faqId + '-icon');
