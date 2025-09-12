@@ -19,6 +19,13 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   
+  <!-- Resource hints for better performance -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+  
   <link rel="canonical" href="https://www.shrisnmahal.com/">
   <meta property="og:title" content="Shri SN Mahal - Luxurious Wedding Venue in Trichy">
   <meta property="og:description" content="Luxurious AC marriage hall in Vayalur, Trichy with royal theme, spacious halls, dining, rooms, garden for outdoor events and parking. Perfect for weddings, receptions, and events.">
@@ -83,13 +90,21 @@
     ]
   }
   </script>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZYS58MRMZ6"></script>
+    <!-- Google Analytics - Optimized for performance -->
     <script>
+      // Load Google Analytics asynchronously
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-ZYS58MRMZ6');
+      
+      // Load GA script after page load
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZYS58MRMZ6';
+        document.head.appendChild(script);
+      });
     </script>
     
     <!-- Google Ads Conversion Tracking (Replace AW-CONVERSION_ID with your actual ID) -->
@@ -114,35 +129,56 @@
       }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    
+    <!-- Critical inline CSS for above-the-fold content -->
+    <style>
+      /* Critical CSS for initial render */
+      body { margin: 0; font-family: Inter, sans-serif; }
+      .hero-section { min-height: 100vh; }
+    </style>
+    
+    <!-- Defer non-critical JavaScript -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script defer> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap">
-    <script>tailwind.config = {
-      "theme": {
-        "extend": {
-          "colors": {
-            "dark-brown": "#3E2723",
-            "medium-brown": "#5D4037",
-            "light-brown": "#8D6E63",
-            "warm-white": "#FFF8E1",
-            "cream": "#F5F5DC",
-            "royal-blue": "#4169E1",
-            "gold": "#FFD700",
-            "soft-white": "#F8F8FF"
-          },
-          "fontFamily": {
-            "sans": [
-              "Inter",
-              "sans-serif"
-            ]
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    <script defer>
+    // Defer Tailwind config until after initial render
+    window.addEventListener('DOMContentLoaded', function() {
+      if (typeof tailwind !== 'undefined') {
+        tailwind.config = {
+          "theme": {
+            "extend": {
+              "colors": {
+                "dark-brown": "#3E2723",
+                "medium-brown": "#5D4037",
+                "light-brown": "#8D6E63",
+                "warm-white": "#FFF8E1",
+                "cream": "#F5F5DC",
+                "royal-blue": "#4169E1",
+                "gold": "#FFD700",
+                "soft-white": "#F8F8FF"
+              },
+              "fontFamily": {
+                "sans": [
+                  "Inter",
+                  "sans-serif"
+                ]
+              }
+            }
           }
-        }
+        };
       }
-    };</script>
+    });
+    </script>
     <!-- Schema.org Structured Data for SEO -->
     <script type="application/ld+json">
     {
@@ -751,6 +787,6 @@
   <i class="fa-solid fa-chevron-up text-xl"></i>
 </button>
 
-<script src="scripts.js"></script>
+<script src="scripts.js" defer></script>
 </body>
 </html>
