@@ -141,89 +141,86 @@
     
     <!-- Critical inline CSS for above-the-fold content -->
     <style>
-      /* Critical CSS for initial render - avoid FOUC and reflows */
+      /* Critical CSS for initial render - prevent FOUC and layout shifts */
+      * { box-sizing: border-box; }
       body { 
         margin: 0; 
         font-family: Inter, sans-serif; 
         line-height: 1.5;
+        background-color: #FFF8E1; /* warm-white */
+        color: #3E2723; /* dark-brown */
       }
+      
+      /* Header and navigation critical styles */
+      header, nav {
+        background-color: #3E2723; /* dark-brown */
+        color: white;
+      }
+      
       .hero-section { 
         min-height: 100vh; 
         position: relative;
+        background-color: #3E2723; /* dark-brown */
+        color: white;
       }
+      
       /* Prevent layout shifts by reserving space for images */
       img { 
         height: auto; 
         max-width: 100%;
       }
+      
+      /* Basic responsive grid */
+      .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+      .flex { display: flex; }
+      .justify-between { justify-content: space-between; }
+      .items-center { align-items: center; }
+      .text-center { text-align: center; }
+      .hidden { display: none; }
+      
+      /* Basic spacing */
+      .p-4 { padding: 1rem; }
+      .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+      .mb-4 { margin-bottom: 1rem; }
+      
       /* Minimize reflows by using transform instead of changing geometric properties */
       .transition-transform {
         transition: transform 0.3s ease;
       }
     </style>
     
-    <!-- Defer non-critical JavaScript and use lighter alternatives -->
-    <script>
-      // Lightweight Tailwind alternative - load only when needed
-      window.addEventListener('load', function() {
-        var script = document.createElement('script');
-        script.src = 'https://cdn.tailwindcss.com';
-        script.defer = true;
-        document.head.appendChild(script);
-      });
-    </script>
+    <!-- Load Tailwind CSS immediately to prevent styling issues -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Load FontAwesome with intersection observer for performance -->
-    <script>
-      window.addEventListener('load', function() {
-        if ('IntersectionObserver' in window) {
-          var fontAwesome = document.createElement('script');
-          fontAwesome.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';
-          fontAwesome.crossOrigin = 'anonymous';
-          fontAwesome.referrerPolicy = 'no-referrer';
-          fontAwesome.defer = true;
-          document.head.appendChild(fontAwesome);
-          
-          // Configure FontAwesome
-          window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
-        }
-      });
-    </script>
+    <!-- Load FontAwesome with defer for better performance -->
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
     <script>
-    // Optimized Tailwind config - load only after critical resources
-    window.addEventListener('load', function() {
-      // Use requestIdleCallback for non-critical configuration
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(function() {
-          if (typeof tailwind !== 'undefined') {
-            tailwind.config = {
-              "theme": {
-                "extend": {
-                  "colors": {
-                    "dark-brown": "#3E2723",
-                    "medium-brown": "#5D4037",
-                    "light-brown": "#8D6E63",
-                    "warm-white": "#FFF8E1",
-                    "cream": "#F5F5DC",
-                    "royal-blue": "#4169E1",
-                    "gold": "#FFD700",
-                    "soft-white": "#F8F8FF"
-                  },
-                  "fontFamily": {
-                    "sans": ["Inter", "sans-serif"]
-                  }
-                }
-              }
-            };
+    // Tailwind config - load immediately to prevent styling issues
+    tailwind.config = {
+      "theme": {
+        "extend": {
+          "colors": {
+            "dark-brown": "#3E2723",
+            "medium-brown": "#5D4037",
+            "light-brown": "#8D6E63",
+            "warm-white": "#FFF8E1",
+            "cream": "#F5F5DC",
+            "royal-blue": "#4169E1",
+            "gold": "#FFD700",
+            "soft-white": "#F8F8FF"
+          },
+          "fontFamily": {
+            "sans": ["Inter", "sans-serif"]
           }
-        });
+        }
       }
-    });
+    };
     </script>
     <!-- Schema.org Structured Data for SEO -->
     <script type="application/ld+json">
@@ -386,7 +383,39 @@
     </div>
     <div class="relative w-full mx-auto">
       <div id="video-carousel" class="overflow-hidden rounded-lg shadow-lg relative w-full" style="min-height:520px;">
-        <iframe src="https://www.youtube.com/embed/EZewGOc-fho?rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-[520px]" id="venue-video"></iframe>
+        <!-- YouTube Facade - loads on click for better performance -->
+        <div id="youtube-facade" class="w-full h-[520px] bg-black relative cursor-pointer group">
+          <img 
+            src="https://img.youtube.com/vi/EZewGOc-fho/maxresdefault.jpg" 
+            alt="Shri SN Mahal venue video thumbnail"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async">
+          
+          <!-- Play button overlay -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="bg-red-600 rounded-full p-6 group-hover:bg-red-700 transition-colors duration-200">
+              <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          
+          <!-- "Click to load" text -->
+          <div class="absolute bottom-4 left-4 bg-black bg-opacity-70 text-white px-3 py-1 rounded text-sm">
+            Click to load video
+          </div>
+        </div>
+        
+        <!-- Actual iframe - loaded only when clicked -->
+        <iframe 
+          id="youtube-iframe"
+          class="w-full h-[520px] hidden" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+        
         <button id="video-left" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-transparent text-white p-0 z-10" aria-label="Previous video" style="border:none;box-shadow:none;">
           <i class="fa-solid fa-chevron-left text-4xl"></i>
         </button>
@@ -661,10 +690,42 @@
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
       <div>
-        <div class="bg-gray-200 h-96 rounded-lg flex items-center justify-center">
+        <div class="bg-gray-200 h-96 rounded-lg flex items-center justify-center relative overflow-hidden">
+          <!-- Google Maps Facade -->
+          <div id="maps-facade" class="w-full h-full bg-gray-300 relative cursor-pointer group">
+            <!-- Static map preview image -->
+            <img 
+              src="https://maps.googleapis.com/maps/api/staticmap?center=Shri+SN+Mahal,+Vayalur,+Tiruchirappalli&zoom=15&size=600x400&markers=color:red%7CShri+SN+Mahal,+Vayalur,+Tiruchirappalli&key=YOUR_STATIC_MAPS_API_KEY" 
+              alt="Shri SN Mahal location map"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            
+            <!-- Fallback for when static map fails -->
+            <div class="w-full h-full bg-gradient-to-br from-blue-100 to-blue-200 flex flex-col items-center justify-center text-gray-700" style="display:none;">
+              <i class="fa-solid fa-map-location-dot text-4xl mb-4 text-blue-600"></i>
+              <h4 class="font-semibold text-lg mb-2">Shri SN Mahal</h4>
+              <p class="text-sm text-center px-4">Vayalur Murugan Temple Road<br>Vayalur, Tiruchirappalli<br>Tamil Nadu 620102</p>
+            </div>
+            
+            <!-- Interactive overlay -->
+            <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-200 flex items-center justify-center">
+              <div class="bg-white rounded-lg px-4 py-2 shadow-lg">
+                <i class="fa-solid fa-external-link mr-2"></i>
+                <span class="font-medium">Click to view interactive map</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Actual iframe - loaded only when clicked -->
           <iframe
-            src="https://www.google.com/maps?q=Shri+SN+Mahal,+Vayalur+Murugan+Temple+Road,+Vayalur,+Tiruchirappalli,+Tamil+Nadu+620102&output=embed"
-            width="100%" height="100%" style="border:0; border-radius:0.75rem; min-height:24rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            id="maps-iframe"
+            class="w-full h-full rounded-lg hidden"
+            style="border:0; min-height:24rem;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
       </div>
@@ -823,25 +884,65 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
         <div class="bg-white rounded-lg shadow-lg border border-gray-700 overflow-hidden relative" style="height: 500px;">
-          <!-- Top overlay to hide today's date header -->
-          <div class="absolute top-0 left-0 right-0 h-12 bg-white z-10"></div>
-          <!-- Calendar container with custom styling -->
-          <div class="relative" style="height: 550px; overflow-y: auto;">
-            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&showPrint=0&showTitle=0&showNav=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA&showDate=0&src=Y2ZjZDI3MWZlZTI3NjAxYTBhYzFhMDMxYWI4NThkM2VlYzY4OWQ4MTIwNmQ1MDg4MDU5NmJiMjRlYjFlY2Y4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233f51b5" 
-                    style="border-width:0; pointer-events: none;" 
-                    width="100%" height="800" frameborder="0" scrolling="no"></iframe>
-            <!-- Invisible overlay that captures scroll but blocks clicks -->
-            <div class="absolute inset-0" 
-                 style="background: transparent; z-index: 5;"
-                 onwheel="
-                   event.preventDefault();
-                   const iframe = this.previousElementSibling;
-                   const container = this.parentElement;
-                   container.scrollTop += event.deltaY;
-                 "></div>
+          <!-- Google Calendar Facade -->
+          <div id="calendar-facade" class="w-full h-full bg-gradient-to-br from-blue-50 to-indigo-100 relative cursor-pointer group">
+            <!-- Calendar preview mockup -->
+            <div class="p-6 h-full flex flex-col">
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-semibold text-gray-800">Available Dates</h3>
+                <i class="fa-solid fa-calendar-days text-2xl text-indigo-600"></i>
+              </div>
+              
+              <!-- Mock calendar entries -->
+              <div class="space-y-3 flex-1">
+                <div class="bg-white rounded-lg p-3 shadow-sm border-l-4 border-green-400">
+                  <div class="text-sm font-medium text-gray-800">Available</div>
+                  <div class="text-xs text-gray-600">Multiple dates this month</div>
+                </div>
+                <div class="bg-white rounded-lg p-3 shadow-sm border-l-4 border-yellow-400">
+                  <div class="text-sm font-medium text-gray-800">Limited availability</div>
+                  <div class="text-xs text-gray-600">Weekend slots filling up</div>
+                </div>
+                <div class="bg-white rounded-lg p-3 shadow-sm border-l-4 border-red-400">
+                  <div class="text-sm font-medium text-gray-800">Booked</div>
+                  <div class="text-xs text-gray-600">Some peak dates reserved</div>
+                </div>
+              </div>
+              
+              <!-- Load button -->
+              <div class="text-center mt-4">
+                <div class="bg-indigo-600 text-white px-4 py-2 rounded-lg group-hover:bg-indigo-700 transition-colors duration-200 inline-flex items-center">
+                  <i class="fa-solid fa-external-link mr-2"></i>
+                  <span class="font-medium">View full availability calendar</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <!-- Bottom overlay to hide Google Calendar footer -->
-          <div class="absolute bottom-0 left-0 right-0 h-20 bg-white z-30"></div>
+          
+          <!-- Actual calendar iframe - loaded only when clicked -->
+          <div id="calendar-container" class="hidden">
+            <!-- Top overlay to hide today's date header -->
+            <div class="absolute top-0 left-0 right-0 h-12 bg-white z-10"></div>
+            <!-- Calendar container with custom styling -->
+            <div class="relative" style="height: 550px; overflow-y: auto;">
+              <iframe 
+                id="calendar-iframe"
+                style="border-width:0; pointer-events: none;" 
+                width="100%" height="800" frameborder="0" scrolling="no">
+              </iframe>
+              <!-- Invisible overlay that captures scroll but blocks clicks -->
+              <div class="absolute inset-0" 
+                   style="background: transparent; z-index: 5;"
+                   onwheel="
+                     event.preventDefault();
+                     const iframe = this.previousElementSibling;
+                     const container = this.parentElement;
+                     container.scrollTop += event.deltaY;
+                   "></div>
+            </div>
+            <!-- Bottom overlay to hide Google Calendar footer -->
+            <div class="absolute bottom-0 left-0 right-0 h-20 bg-white z-30"></div>
+          </div>
         </div>
       </div>
       <div class="relative">
@@ -930,5 +1031,74 @@
 </button>
 
 <script src="scripts.js" defer></script>
+
+<!-- Third-party embed facades for better performance -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // YouTube facade handler
+  const youtubeFacade = document.getElementById('youtube-facade');
+  const youtubeIframe = document.getElementById('youtube-iframe');
+  
+  if (youtubeFacade && youtubeIframe) {
+    youtubeFacade.addEventListener('click', function() {
+      // Load YouTube iframe
+      youtubeIframe.src = 'https://www.youtube.com/embed/EZewGOc-fho?rel=0&modestbranding=1&autoplay=1';
+      youtubeFacade.style.display = 'none';
+      youtubeIframe.classList.remove('hidden');
+      
+      // Track interaction for analytics
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'video_play', {
+          'event_category': 'engagement',
+          'event_label': 'youtube_facade_click'
+        });
+      }
+    });
+  }
+  
+  // Google Maps facade handler
+  const mapsFacade = document.getElementById('maps-facade');
+  const mapsIframe = document.getElementById('maps-iframe');
+  
+  if (mapsFacade && mapsIframe) {
+    mapsFacade.addEventListener('click', function() {
+      // Load Google Maps iframe
+      mapsIframe.src = 'https://www.google.com/maps?q=Shri+SN+Mahal,+Vayalur+Murugan+Temple+Road,+Vayalur,+Tiruchirappalli,+Tamil+Nadu+620102&output=embed';
+      mapsFacade.style.display = 'none';
+      mapsIframe.classList.remove('hidden');
+      
+      // Track interaction for analytics
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'map_view', {
+          'event_category': 'engagement',
+          'event_label': 'maps_facade_click'
+        });
+      }
+    });
+  }
+  
+  // Google Calendar facade handler
+  const calendarFacade = document.getElementById('calendar-facade');
+  const calendarContainer = document.getElementById('calendar-container');
+  const calendarIframe = document.getElementById('calendar-iframe');
+  
+  if (calendarFacade && calendarContainer && calendarIframe) {
+    calendarFacade.addEventListener('click', function() {
+      // Load Google Calendar iframe
+      calendarIframe.src = 'https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&showPrint=0&showTitle=0&showNav=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA&showDate=0&src=Y2ZjZDI3MWZlZTI3NjAxYTBhYzFhMDMxYWI4NThkM2VlYzY4OWQ4MTIwNmQ1MDg4MDU5NmJiMjRlYjFlY2Y4OUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%233f51b5';
+      calendarFacade.style.display = 'none';
+      calendarContainer.classList.remove('hidden');
+      
+      // Track interaction for analytics
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'calendar_view', {
+          'event_category': 'engagement',
+          'event_label': 'calendar_facade_click'
+        });
+      }
+    });
+  }
+});
+</script>
 </body>
 </html>
