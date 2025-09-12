@@ -111,7 +111,14 @@
       });
     </script>
     
-    <!-- Google Ads Conversion Tracking (Replace AW-CONVERSION_ID with your actual ID) -->
+    <!-- Google Ads Conversion Tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-644611791"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-644611791');
+    </script>
     <script>
       // Enhanced function to track phone call interactions
       function trackPhoneCall(location = 'unknown') {
@@ -124,17 +131,13 @@
             'value': 1
           });
           
-          // Track as conversion for Google Ads (when you have actual conversion ID)
-          // gtag('event', 'conversion', {
-          //   'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
-          //   'event_callback': function() {
-          //     // Optional: Add callback logic
-          //   }
-          // });
+          // Google Ads phone call conversion tracking
+          gtag('event', 'conversion', {
+            'send_to': 'AW-644611791',
+            'value': 1.0,
+            'currency': 'INR'
+          });
         }
-        
-        // Console log for debugging (remove in production if needed)
-        console.log('Phone call tracking: User clicked phone number from', location);
       }
 
       // Enhanced function to track video interactions
@@ -148,20 +151,7 @@
             'video_id': videoId,
             'value': 1
           });
-          
-          // Track as conversion for high-value actions like video plays
-          if (action === 'play') {
-            // Optional: Track video plays as micro-conversions
-            // gtag('event', 'conversion', {
-            //   'send_to': 'AW-CONVERSION_ID/VIDEO_PLAY_LABEL',
-            //   'value': 0.5,
-            //   'currency': 'INR'
-            // });
-          }
         }
-        
-        // Console log for debugging (remove in production if needed)
-        console.log('Video tracking:', action, 'for video', videoId, 'from', location);
       }
 
       // Enhanced function to track header navigation clicks
@@ -175,9 +165,6 @@
             'value': 1
           });
         }
-        
-        // Console log for debugging (remove in production if needed)
-        console.log('Header click tracking:', section, 'from', location);
       }
 
       // Enhanced function to track footer navigation clicks
@@ -191,9 +178,6 @@
             'value': 1
           });
         }
-        
-        // Console log for debugging (remove in production if needed)
-        console.log('Footer click tracking:', section, 'from', location);
       }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -421,11 +405,11 @@
         <div class="flex space-x-6">
           <div class="flex flex-1 justify-center items-center space-x-16">
             <div class="flex flex-col items-center text-center w-1/2">
-              <div class="text-3xl font-bold text-dark-brown">11</div>
-              <div class="text-gray-600 text-center">Months Old<br>Brand New Marriage Hall</div>
+              <div class="text-3xl font-bold text-dark-brown">2</div>
+              <div class="text-gray-600 text-center">Years Old<br>Brand New Marriage Hall</div>
             </div>
             <div class="flex flex-col items-center text-center w-1/2">
-              <div class="text-3xl font-bold text-dark-brown">150+</div>
+              <div class="text-3xl font-bold text-dark-brown">100+</div>
               <div class="text-gray-600 text-center">Happy Couples<br>and counting....</div>
             </div>
           </div>
