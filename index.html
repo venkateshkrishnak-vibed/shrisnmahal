@@ -121,22 +121,63 @@
     </script>
     <script>
       // Enhanced function to track phone call interactions
+      // Traffic source detection for better attribution
+      function getTrafficSource() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const gclid = urlParams.get('gclid');
+        const gbraid = urlParams.get('gbraid');
+        const wbraid = urlParams.get('wbraid');
+        const utm_source = urlParams.get('utm_source');
+        const utm_medium = urlParams.get('utm_medium');
+        
+        if (gclid || gbraid || wbraid) return 'google_ads';
+        if (utm_source && utm_medium) return `${utm_source}_${utm_medium}`;
+        if (document.referrer) {
+          const referrer = new URL(document.referrer).hostname;
+          if (referrer.includes('google.')) return 'google_organic';
+          if (referrer.includes('facebook.')) return 'facebook';
+          if (referrer.includes('instagram.')) return 'instagram';
+          return 'referral';
+        }
+        return 'direct';
+      }
+
       function trackPhoneCall(location = 'unknown') {
-        // Google Analytics 4 event tracking
+        const trafficSource = getTrafficSource();
+        
+        // Always track in Google Analytics 4 (all phone calls)
         if (typeof gtag !== 'undefined') {
           gtag('event', 'phone_call', {
             'event_category': 'engagement',
             'event_label': 'phone_click',
             'location': location,
-            'value': 1
+            'traffic_source': trafficSource,
+            'value': 100
           });
           
-          // Google Ads phone call conversion tracking
-          gtag('event', 'conversion', {
-            'send_to': 'AW-644611791',
-            'value': 1.0,
-            'currency': 'INR'
-          });
+          // Check if user came from Google Ads (gclid parameter)
+          const urlParams = new URLSearchParams(window.location.search);
+          const gclid = urlParams.get('gclid');
+          const gbraid = urlParams.get('gbraid'); // Enhanced conversions
+          const wbraid = urlParams.get('wbraid'); // iOS 14.5+ tracking
+          
+          // Google Ads conversion tracking (only for ad-driven traffic)
+          if (gclid || gbraid || wbraid) {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-644611791',
+              'value': 100.0,
+              'currency': 'INR'
+            });
+            
+            // Track ad attribution in GA4 as well
+            gtag('event', 'phone_call_from_ads', {
+              'event_category': 'ads_conversion',
+              'event_label': 'phone_click_ads',
+              'location': location,
+              'value': 100,
+              'gclid': gclid || gbraid || wbraid
+            });
+          }
         }
       }
 
