@@ -19,6 +19,10 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   
+  <!-- Cache control and performance hints -->
+  <meta http-equiv="Cache-Control" content="public, max-age=31536000">
+  <meta http-equiv="Expires" content="Thu, 31 Dec 2025 23:59:59 GMT">
+  
   <!-- Resource hints for better performance -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -132,50 +136,92 @@
     
     <!-- Preload critical resources -->
     <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="assets/images/hero.jpg" as="image">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
     
     <!-- Critical inline CSS for above-the-fold content -->
     <style>
-      /* Critical CSS for initial render */
-      body { margin: 0; font-family: Inter, sans-serif; }
-      .hero-section { min-height: 100vh; }
+      /* Critical CSS for initial render - avoid FOUC and reflows */
+      body { 
+        margin: 0; 
+        font-family: Inter, sans-serif; 
+        line-height: 1.5;
+      }
+      .hero-section { 
+        min-height: 100vh; 
+        position: relative;
+      }
+      /* Prevent layout shifts by reserving space for images */
+      img { 
+        height: auto; 
+        max-width: 100%;
+      }
+      /* Minimize reflows by using transform instead of changing geometric properties */
+      .transition-transform {
+        transition: transform 0.3s ease;
+      }
     </style>
     
-    <!-- Defer non-critical JavaScript -->
-    <script src="https://cdn.tailwindcss.com" defer></script>
-    <script defer> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <!-- Defer non-critical JavaScript and use lighter alternatives -->
+    <script>
+      // Lightweight Tailwind alternative - load only when needed
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.src = 'https://cdn.tailwindcss.com';
+        script.defer = true;
+        document.head.appendChild(script);
+      });
+    </script>
+    
+    <!-- Load FontAwesome with intersection observer for performance -->
+    <script>
+      window.addEventListener('load', function() {
+        if ('IntersectionObserver' in window) {
+          var fontAwesome = document.createElement('script');
+          fontAwesome.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';
+          fontAwesome.crossOrigin = 'anonymous';
+          fontAwesome.referrerPolicy = 'no-referrer';
+          fontAwesome.defer = true;
+          document.head.appendChild(fontAwesome);
+          
+          // Configure FontAwesome
+          window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
+        }
+      });
+    </script>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
-    <script defer>
-    // Defer Tailwind config until after initial render
-    window.addEventListener('DOMContentLoaded', function() {
-      if (typeof tailwind !== 'undefined') {
-        tailwind.config = {
-          "theme": {
-            "extend": {
-              "colors": {
-                "dark-brown": "#3E2723",
-                "medium-brown": "#5D4037",
-                "light-brown": "#8D6E63",
-                "warm-white": "#FFF8E1",
-                "cream": "#F5F5DC",
-                "royal-blue": "#4169E1",
-                "gold": "#FFD700",
-                "soft-white": "#F8F8FF"
-              },
-              "fontFamily": {
-                "sans": [
-                  "Inter",
-                  "sans-serif"
-                ]
+    <script>
+    // Optimized Tailwind config - load only after critical resources
+    window.addEventListener('load', function() {
+      // Use requestIdleCallback for non-critical configuration
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() {
+          if (typeof tailwind !== 'undefined') {
+            tailwind.config = {
+              "theme": {
+                "extend": {
+                  "colors": {
+                    "dark-brown": "#3E2723",
+                    "medium-brown": "#5D4037",
+                    "light-brown": "#8D6E63",
+                    "warm-white": "#FFF8E1",
+                    "cream": "#F5F5DC",
+                    "royal-blue": "#4169E1",
+                    "gold": "#FFD700",
+                    "soft-white": "#F8F8FF"
+                  },
+                  "fontFamily": {
+                    "sans": ["Inter", "sans-serif"]
+                  }
+                }
               }
-            }
+            };
           }
-        };
+        });
       }
     });
     </script>
@@ -274,7 +320,13 @@
 
 <!-- Hero Banner -->
 <section id="hero" class="relative h-screen overflow-hidden" style="height: calc(100vh - 72px)">
-  <img class="w-full h-full object-cover" src="assets/images/hero.jpg" alt="luxurious wedding venue hall with royal blue and gold decorations, crystal chandeliers, elegant wedding setup">
+  <img class="w-full h-full object-cover" 
+       src="assets/images/hero.jpg" 
+       alt="luxurious wedding venue hall with royal blue and gold decorations, crystal chandeliers, elegant wedding setup"
+       fetchpriority="high"
+       width="1920"
+       height="1080"
+       decoding="async">
   <div class="absolute inset-0 bg-black bg-opacity-40"></div>
   <div class="absolute inset-0 flex items-center justify-center">
     <div class="text-center text-white">
@@ -355,40 +407,112 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <div class="relative group overflow-hidden rounded-lg">
-  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery1.jpg" alt="wedding ceremony setup with royal blue decorations and gold accents">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" 
+       src="assets/images/gallery1.jpg" 
+       alt="wedding ceremony setup with royal blue decorations and gold accents"
+       loading="lazy"
+       decoding="async"
+       width="400"
+       height="256">
     </div>
       <div class="relative group overflow-hidden rounded-lg">
-  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery2.jpg" alt="wedding reception hall with elegant lighting and table settings">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" 
+       src="assets/images/gallery2.jpg" 
+       alt="wedding reception hall with elegant lighting and table settings"
+       loading="lazy"
+       decoding="async"
+       width="400"
+       height="256">
       </div>
       <div class="relative group overflow-hidden rounded-lg">
-  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery3.jpg" alt="bride and groom dancing in decorated wedding venue">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" 
+       src="assets/images/gallery3.jpg" 
+       alt="bride and groom dancing in decorated wedding venue"
+       loading="lazy"
+       decoding="async"
+       width="400"
+       height="256">
       </div>
       <div class="relative group overflow-hidden rounded-lg">
-  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery4.jpg" alt="wedding stage decoration with flowers and royal blue theme">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" 
+       src="assets/images/gallery4.jpg" 
+       alt="wedding stage decoration with flowers and royal blue theme"
+       loading="lazy"
+       decoding="async"
+       width="400"
+       height="256">
       </div>
       <div class="relative group overflow-hidden rounded-lg">
-  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery5.jpg" alt="wedding catering setup with elegant food presentation">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" 
+       src="assets/images/gallery5.jpg" 
+       alt="wedding catering setup with elegant food presentation"
+       loading="lazy"
+       decoding="async"
+       width="400"
+       height="256">
       </div>
       <div class="relative group overflow-hidden rounded-lg">
-  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery6.jpg" alt="wedding guests enjoying celebration in beautiful venue">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" 
+       src="assets/images/gallery6.jpg" 
+       alt="wedding guests enjoying celebration in beautiful venue"
+       loading="lazy"
+       decoding="async"
+       width="400"
+       height="256">
       </div>
       <div class="relative group overflow-hidden rounded-lg">
-  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery7.jpg" alt="elegant wedding venue setup">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" 
+       src="assets/images/gallery7.jpg" 
+       alt="elegant wedding venue setup"
+       loading="lazy"
+       decoding="async"
+       width="400"
+       height="256">
       </div>
       <div class="relative group overflow-hidden rounded-lg">
-  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery8.webp" alt="wedding venue interior view">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" 
+       src="assets/images/gallery8.webp" 
+       alt="wedding venue interior view"
+       loading="lazy"
+       decoding="async"
+       width="400"
+       height="256">
       </div>
       <div class="relative group overflow-hidden rounded-lg">
-  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery9.webp" alt="wedding ceremony decoration">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" 
+       src="assets/images/gallery9.webp" 
+       alt="wedding ceremony decoration"
+       loading="lazy"
+       decoding="async"
+       width="400"
+       height="256">
       </div>
       <div class="relative group overflow-hidden rounded-lg">
-  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery10.webp" alt="wedding venue outdoor area">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" 
+       src="assets/images/gallery10.webp" 
+       alt="wedding venue outdoor area"
+       loading="lazy"
+       decoding="async"
+       width="400"
+       height="256">
       </div>
       <div class="relative group overflow-hidden rounded-lg">
-  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery11.webp" alt="wedding reception setup">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" 
+       src="assets/images/gallery11.webp" 
+       alt="wedding reception setup"
+       loading="lazy"
+       decoding="async"
+       width="400"
+       height="256">
       </div>
       <div class="relative group overflow-hidden rounded-lg">
-  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/gallery12.webp" alt="wedding venue dining area">
+  <img class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" 
+       src="assets/images/gallery12.webp" 
+       alt="wedding venue dining area"
+       loading="lazy"
+       decoding="async"
+       width="400"
+       height="256">
       </div>
     </div>
   </div>
@@ -461,7 +585,13 @@
         </div>
         <p class="text-gray-600 mb-6 italic">"I had a memorable wedding here. The AC rooms for Bride and Groom were spacious and nice. The venue is clean and massive like a big Mall. Decoration and interior also are very nice.. I had wonderful marriage day.. Very helpful people and owner was nice and ready to help for any issues"</p>
         <div class="flex items-center">
-          <img src="assets/images/avatar1.jpg" alt="Prem Lakshminarayanan" class="w-12 h-12 rounded-full mr-4">
+          <img src="assets/images/avatar1.jpg" 
+               alt="Prem Lakshminarayanan" 
+               class="w-12 h-12 rounded-full mr-4"
+               loading="lazy"
+               decoding="async"
+               width="48"
+               height="48">
           <div>
             <div class="font-semibold text-gray-800">Prem Lakshminarayanan</div>
             <div class="text-gray-500 text-sm">Wedding Groom - June 2024</div>
@@ -480,7 +610,13 @@
         </div>
         <p class="text-gray-600 mb-6 italic">"Excellent space. Very good arrangements. Ample car parking. Ideal mandapam for all occasions. Hall, dining, rooms all are fully air-conditioned and there is also a nice lawn to spend the evenings. We enjoyed, would love to attend more events here!"</p>
         <div class="flex items-center">
-          <img src="assets/images/avatar2.jpg" alt="Chandrasekhar" class="w-12 h-12 rounded-full mr-4">
+          <img src="assets/images/avatar2.jpg" 
+               alt="Chandrasekhar" 
+               class="w-12 h-12 rounded-full mr-4"
+               loading="lazy"
+               decoding="async"
+               width="48"
+               height="48">
           <div>
             <div class="font-semibold text-gray-800">Chandrasekhar</div>
             <div class="text-gray-500 text-sm">Wedding Guest - January 2025</div>
@@ -499,7 +635,13 @@
         </div>
         <p class="text-gray-600 mb-6 italic">"Very good place, very good ambience, lots of natural lighting surrounded by beautiful palm and coconut trees. Photos have come quite well and the couple is very happy. A beautiful and well maintained lawn is an added attraction"</p>
         <div class="flex items-center">
-          <img src="assets/images/avatar3.jpg" alt="AB Photography" class="w-12 h-12 rounded-full mr-4">
+          <img src="assets/images/avatar3.jpg" 
+               alt="AB Photography" 
+               class="w-12 h-12 rounded-full mr-4"
+               loading="lazy"
+               decoding="async"
+               width="48"
+               height="48">
           <div>
             <div class="font-semibold text-gray-800">AB Photography</div>
             <div class="text-gray-500 text-sm">Wedding Photographer - June 2025</div>
