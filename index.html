@@ -113,23 +113,87 @@
     
     <!-- Google Ads Conversion Tracking (Replace AW-CONVERSION_ID with your actual ID) -->
     <script>
-      // Function to track phone call conversions
-      function trackPhoneCall() {
-        gtag('event', 'conversion', {
-          'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
-          'event_callback': function() {
-            // Optional: Add callback logic
-          }
-        });
+      // Enhanced function to track phone call interactions
+      function trackPhoneCall(location = 'unknown') {
+        // Google Analytics 4 event tracking
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'phone_call', {
+            'event_category': 'engagement',
+            'event_label': 'phone_click',
+            'location': location,
+            'value': 1
+          });
+          
+          // Track as conversion for Google Ads (when you have actual conversion ID)
+          // gtag('event', 'conversion', {
+          //   'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
+          //   'event_callback': function() {
+          //     // Optional: Add callback logic
+          //   }
+          // });
+        }
+        
+        // Console log for debugging (remove in production if needed)
+        console.log('Phone call tracking: User clicked phone number from', location);
       }
-      
-      // Function to track form submissions or booking inquiries
-      function trackBookingInquiry() {
-        gtag('event', 'conversion', {
-          'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
-          'value': 1.0,
-          'currency': 'INR'
-        });
+
+      // Enhanced function to track video interactions
+      function trackVideoInteraction(action, videoId = 'unknown', location = 'main_video') {
+        // Google Analytics 4 event tracking
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'video_' + action, {
+            'event_category': 'engagement',
+            'event_label': 'youtube_video_' + videoId,
+            'location': location,
+            'video_id': videoId,
+            'value': 1
+          });
+          
+          // Track as conversion for high-value actions like video plays
+          if (action === 'play') {
+            // Optional: Track video plays as micro-conversions
+            // gtag('event', 'conversion', {
+            //   'send_to': 'AW-CONVERSION_ID/VIDEO_PLAY_LABEL',
+            //   'value': 0.5,
+            //   'currency': 'INR'
+            // });
+          }
+        }
+        
+        // Console log for debugging (remove in production if needed)
+        console.log('Video tracking:', action, 'for video', videoId, 'from', location);
+      }
+
+      // Enhanced function to track header navigation clicks
+      function trackHeaderClick(section, location = 'desktop') {
+        // Google Analytics 4 event tracking
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'header_click', {
+            'event_category': 'navigation',
+            'event_label': section,
+            'location': location,
+            'value': 1
+          });
+        }
+        
+        // Console log for debugging (remove in production if needed)
+        console.log('Header click tracking:', section, 'from', location);
+      }
+
+      // Enhanced function to track footer navigation clicks
+      function trackFooterClick(section, location = 'footer') {
+        // Google Analytics 4 event tracking
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'footer_click', {
+            'event_category': 'navigation',
+            'event_label': section,
+            'location': location,
+            'value': 1
+          });
+        }
+        
+        // Console log for debugging (remove in production if needed)
+        console.log('Footer click tracking:', section, 'from', location);
       }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -268,28 +332,28 @@
   <div class="container mx-auto px-4 py-4 flex items-center justify-between">
     <!-- Logo -->
     <div class="flex items-center">
-      <a href="#hero"><img src="assets/images/logo.png" alt="Shri SN Mahal Logo" class="h-16 object-contain hover:opacity-90 transition-opacity duration-200"></a>
+      <a href="#hero" onclick="trackHeaderClick('logo', 'desktop')"><img src="assets/images/logo.png" alt="Shri SN Mahal Logo" class="h-16 object-contain hover:opacity-90 transition-opacity duration-200"></a>
     </div>
     
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex items-center space-x-6 flex-1 justify-center">
-      <a href="#about" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">About</a>
-      <a href="#venue-videos" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">Videos</a>
-      <a href="#gallery" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">Gallery</a>
-      <a href="#why-choose-us" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">Why us</a>
-      <a href="#testimonials" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">Testimonials</a>
-      <a href="#faqs" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">FAQs</a>
-      <a href="#upcoming-events" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">Events</a>
-      <a href="#locate-us" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2">Contact</a>
+      <a href="#about" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2" onclick="trackHeaderClick('about', 'desktop')">About</a>
+      <a href="#venue-videos" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2" onclick="trackHeaderClick('videos', 'desktop')">Videos</a>
+      <a href="#gallery" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2" onclick="trackHeaderClick('gallery', 'desktop')">Gallery</a>
+      <a href="#why-choose-us" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2" onclick="trackHeaderClick('why_us', 'desktop')">Why us</a>
+      <a href="#testimonials" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2" onclick="trackHeaderClick('testimonials', 'desktop')">Testimonials</a>
+      <a href="#faqs" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2" onclick="trackHeaderClick('faqs', 'desktop')">FAQs</a>
+      <a href="#upcoming-events" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2" onclick="trackHeaderClick('events', 'desktop')">Events</a>
+      <a href="#locate-us" class="text-warm-white hover:text-cream font-medium transition-colors duration-200 px-4 py-2" onclick="trackHeaderClick('contact', 'desktop')">Contact</a>
     </nav>
     
     <!-- Right side content -->
     <div class="flex items-center space-x-4">
       <!-- Desktop phone number -->
-      <div class="hidden md:flex items-center space-x-2 text-warm-white">
+      <a href="tel:+919092804747" class="hidden md:flex items-center space-x-2 text-warm-white hover:text-cream transition-colors duration-200" onclick="trackPhoneCall('header_desktop')">
         <i class="fa-solid fa-phone text-warm-white"></i>
         <span>+91 90928 04747</span>
-      </div>
+      </a>
       <!-- Mobile menu button -->
       <button class="md:hidden text-warm-white p-2" onclick="toggleMobileMenu()">
         <i class="fa-solid fa-bars text-xl"></i>
@@ -299,18 +363,18 @@
   <!-- Mobile Navigation Menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-medium-brown border-t border-light-brown">
     <nav class="px-4 py-4 space-y-1">
-      <a href="#about" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu()">About</a>
-      <a href="#venue-videos" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu()">Videos</a>
-      <a href="#gallery" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu()">Gallery</a>
-      <a href="#why-choose-us" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu()">Why us</a>
-      <a href="#testimonials" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu()">Testimonials</a>
-      <a href="#faqs" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu()">FAQs</a>
-      <a href="#upcoming-events" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu()">Events</a>
-      <a href="#locate-us" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu()">Contact</a>
-      <div class="flex items-center justify-center space-x-2 text-warm-white pt-4 mt-4 border-t border-light-brown">
+      <a href="#about" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu(); trackHeaderClick('about', 'mobile')">About</a>
+      <a href="#venue-videos" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu(); trackHeaderClick('videos', 'mobile')">Videos</a>
+      <a href="#gallery" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu(); trackHeaderClick('gallery', 'mobile')">Gallery</a>
+      <a href="#why-choose-us" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu(); trackHeaderClick('why_us', 'mobile')">Why us</a>
+      <a href="#testimonials" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu(); trackHeaderClick('testimonials', 'mobile')">Testimonials</a>
+      <a href="#faqs" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu(); trackHeaderClick('faqs', 'mobile')">FAQs</a>
+      <a href="#upcoming-events" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu(); trackHeaderClick('events', 'mobile')">Events</a>
+      <a href="#locate-us" class="block text-warm-white hover:text-cream hover:bg-light-brown font-medium py-3 px-4 rounded transition-all duration-200" onclick="toggleMobileMenu(); trackHeaderClick('contact', 'mobile')">Contact</a>
+      <a href="tel:+919092804747" class="flex items-center justify-center space-x-2 text-warm-white hover:text-cream pt-4 mt-4 border-t border-light-brown transition-colors duration-200" onclick="trackPhoneCall('mobile_menu'); toggleMobileMenu()">
         <i class="fa-solid fa-phone text-cream"></i>
         <span class="font-medium">+91 90928 04747</span>
-      </div>
+      </a>
     </nav>
   </div>
 </header>
@@ -329,7 +393,7 @@
     <div class="text-center text-white">
       <h1 class="font-serif text-5xl md:text-6xl font-bold mb-4">Shri SN Mahal</h1>
   <p class="text-xl md:text-2xl mb-8">Begin your forever with us!</p>
-      <a href="tel:+919092804747" class="bg-cream text-dark-brown px-8 py-3 rounded-lg font-semibold text-lg hover:bg-dark-brown hover:text-warm-white inline-block" onclick="trackPhoneCall()">
+      <a href="tel:+919092804747" class="bg-cream text-dark-brown px-8 py-3 rounded-lg font-semibold text-lg hover:bg-dark-brown hover:text-warm-white inline-block" onclick="trackPhoneCall('hero_cta')">
         Book Now
       </a>
     </div>
@@ -716,7 +780,7 @@
           </div>
           <div>
             <h4 class="font-semibold text-gray-800 mb-1">Phone</h4>
-            <p class="text-gray-600">+91 90928 04747</p>
+            <a href="tel:+919092804747" class="text-gray-600 hover:text-dark-brown transition-colors duration-200" onclick="trackPhoneCall('contact_section')">+91 90928 04747</a>
           </div>
         </div>
         <div class="flex items-start space-x-4">
@@ -878,7 +942,7 @@
         <div class="absolute inset-0 bg-gradient-to-t from-dark-brown via-transparent to-transparent rounded-lg"></div>
         <div class="absolute bottom-6 left-6 text-white">
           <h3 class="font-serif text-2xl font-bold mb-2">Plan Your Event</h3>
-        <p class="text-cream">Call at 9092804747 to book your special day with us!</p>
+        <p class="text-cream">Call at <a href="tel:+919092804747" class="text-cream hover:text-white underline transition-colors duration-200" onclick="trackPhoneCall('events_image')">9092804747</a> to book your special day with us!</p>
         </div>
       </div>
     </div>
@@ -898,20 +962,20 @@
       <div>
         <h3 class="font-semibold text-lg mb-4">Quick Links</h3>
         <ul class="space-y-2">
-          <li><a href="#hero" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Home</a></li>
-          <li><a href="#about" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">About Us</a></li>
-          <li><a href="#gallery" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Gallery</a></li>
-          <li><a href="#why-choose-us" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Why choose us</a></li>
-          <li><a href="#testimonials" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Testimonials</a></li>
+          <li><a href="#hero" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200" onclick="trackFooterClick('home')">Home</a></li>
+          <li><a href="#about" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200" onclick="trackFooterClick('about')">About Us</a></li>
+          <li><a href="#gallery" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200" onclick="trackFooterClick('gallery')">Gallery</a></li>
+          <li><a href="#why-choose-us" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200" onclick="trackFooterClick('why_us')">Why choose us</a></li>
+          <li><a href="#testimonials" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200" onclick="trackFooterClick('testimonials')">Testimonials</a></li>
         </ul>
       </div>
       <div>
         <h3 class="font-semibold text-lg mb-4">More Links</h3>
         <ul class="space-y-2">
-          <li><a href="#venue-videos" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Videos</a></li>
-          <li><a href="#faqs" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">FAQs</a></li>
-          <li><a href="#upcoming-events" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Events</a></li>
-          <li><a href="#locate-us" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200">Contact</a></li>
+          <li><a href="#venue-videos" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200" onclick="trackFooterClick('videos')">Videos</a></li>
+          <li><a href="#faqs" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200" onclick="trackFooterClick('faqs')">FAQs</a></li>
+          <li><a href="#upcoming-events" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200" onclick="trackFooterClick('events')">Events</a></li>
+          <li><a href="#locate-us" class="text-gray-300 hover:text-cream font-medium cursor-pointer transition duration-200" onclick="trackFooterClick('contact')">Contact</a></li>
         </ul>
       </div>
       <div>
@@ -933,7 +997,7 @@
           </div>
           <div class="flex items-center">
             <i class="fa-solid fa-phone mr-3 text-cream"></i>
-            <span class="text-gray-300">+91 90928 04747</span>
+            <a href="tel:+919092804747" class="text-gray-300 hover:text-cream transition-colors duration-200" onclick="trackPhoneCall('footer')">+91 90928 04747</a>
           </div>
           <div class="flex items-center">
             <i class="fa-solid fa-envelope mr-3 text-cream"></i>
@@ -944,7 +1008,7 @@
     </div>
     <div class="border-t border-gray-700 mt-8 pt-8 text-center">
       <div class="flex items-center justify-center space-x-4 mb-4">
-        <a href="https://www.youtube.com/@shrisnmahaltrichy" target="_blank" rel="noopener noreferrer" class="text-red-500 hover:text-red-700 transition-colors duration-200">
+        <a href="https://www.youtube.com/@shrisnmahaltrichy" target="_blank" rel="noopener noreferrer" class="text-red-500 hover:text-red-700 transition-colors duration-200" onclick="trackFooterClick('youtube_social')">
           <i class="fa-brands fa-youtube text-2xl"></i>
         </a>
       </div>
@@ -954,7 +1018,7 @@
 </footer>
 
 <!-- Back to Top Button -->
-<button id="back-to-top" class="fixed bottom-8 right-8 bg-dark-brown text-white p-3 rounded-full shadow-lg hover:bg-medium-brown transition-colors duration-200 hidden z-50">
+<button id="back-to-top" class="fixed bottom-8 right-8 bg-dark-brown text-white p-3 rounded-full shadow-lg hover:bg-medium-brown transition-colors duration-200 hidden z-50" onclick="trackFooterClick('back_to_top')">
   <i class="fa-solid fa-chevron-up text-xl"></i>
 </button>
 
@@ -1013,12 +1077,9 @@ document.addEventListener('DOMContentLoaded', function() {
     youtubeIframe.classList.remove('hidden');
     isVideoLoaded = true;
     
-    // Track interaction for analytics
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'video_play', {
-        'event_category': 'engagement',
-        'event_label': 'youtube_video_' + video.id
-      });
+    // Track video play when user clicks facade
+    if (autoplay) {
+      trackVideoInteraction('play', video.id, 'facade_click');
     }
   }
   
@@ -1032,7 +1093,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // Video carousel navigation
   if (leftBtn && rightBtn) {
     leftBtn.addEventListener('click', function() {
+      const previousVideo = currentVideo;
       currentVideo = (currentVideo - 1 + videoData.length) % videoData.length;
+      
+      // Track navigation
+      trackVideoInteraction('navigate_previous', videoData[currentVideo].id, 'left_arrow');
       
       if (isVideoLoaded) {
         // If video is already loaded, change the iframe source
@@ -1044,7 +1109,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     rightBtn.addEventListener('click', function() {
+      const previousVideo = currentVideo;
       currentVideo = (currentVideo + 1) % videoData.length;
+      
+      // Track navigation
+      trackVideoInteraction('navigate_next', videoData[currentVideo].id, 'right_arrow');
       
       if (isVideoLoaded) {
         // If video is already loaded, change the iframe source
