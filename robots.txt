@@ -13,4 +13,4 @@ Allow: /
 User-agent: Googlebot-Video
 Allow: /
 
-Sitemap: https://shrisnmahal.com/sitemap.xml
+Sitemap: https://www.shrisnmahal.com/sitemap.xml
